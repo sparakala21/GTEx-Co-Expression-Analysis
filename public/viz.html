@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GTEx Network</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <script src="./main.js"></script>
+  <style>
+    @import "./styles.css";
+  </style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  fetching graph
+</div>
+
+<div id="error-bar"></div>
+
+<header>
+  <h1>GTEx Network</h1>
+  <div id="status">nodes: <span id="stat-nodes">—</span> &nbsp; edges: <span id="stat-edges">—</span></div>
+</header>
+
+<main>
+  <div id="cy">
+    <div id="expand-toast">expanding…</div>
+  </div>
+
+  <aside>
+    <div class="panel-section">
+      <div class="panel-label">Selected</div>
+      <div id="detail-content" style="color: var(--text); font-size:10px;">
+        click a node
+      </div>
+    </div>
+
+    <div id="search-panel">
+      <div id="search-row">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="gene id or label…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="search-btn" title="Search">▶</button>
+        <button id="search-clear" title="Clear">✕</button>
+      </div>
+      <div id="search-status"></div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-label">Legend</div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot clique"></div>
+          clique node
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot leaf"></div>
+          leaf node
+        </div>
+        <div class="legend-item">
+          <div class="legend-line internal"></div>
+          internal edge
+        </div>
+        <div class="legend-item">
+          <div class="legend-line boundary"></div>
+          boundary edge
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <button class="fit-btn" onclick="cy.fit(undefined, 40)">fit to screen</button>
+    </div>
+  </aside>
+</main>
+
+
+</body>
+</html>
