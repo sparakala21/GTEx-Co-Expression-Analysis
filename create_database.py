@@ -255,9 +255,9 @@ def run_pipeline(cur, conn, depth):
     All file paths are defined here at the beginning.
     """
     # === FILE PATHS - CENTRALIZED HERE ===
-    expression_data_path = "../expression_data/rna_tissue_consensus.tsv"
-    graph_path = "../tissue_networks/combined_network.gexf"
-    layout_path = "../spring_layout/combined_embeddings_2d.csv"
+    expression_data_path = "data/expression_data/rna_tissue_consensus.tsv"
+    graph_path = "data/GTEx_PMFG.gexf"
+    layout_path = "data/GTEx_PMFG_layout.csv"
     
     print(f"Expression data: {expression_data_path}")
     print(f"Network graph: {graph_path}")
