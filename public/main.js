@@ -1,7 +1,17 @@
-const API = 'https://api-production-597d.up.railway.app';
+const API = 'https://api-production-f255.up.railway.app';
 
 let cy;
 let expanding = false;
+
+tissues = [
+  'adipose tissue', 'adrenal gland', 'amygdala', 'appendix', 'basal ganglia', 
+  'blood vessel', 'bone marrow', 'breast', 'cerebellum', 'cerebral cortex', 'cervix', 
+  'choroid plexus', 'colon', 'duodenum', 'endometrium', 'epididymis', 'esophagus', 
+  'fallopian tube', 'gallbladder', 'heart muscle', 'hippocampal formation', 'hypothalamus', 
+  'kidney', 'liver', 'lung', 'lymph node', 'midbrain', 'ovary', 'pancreas', 'parathyroid gland', 
+  'pituitary gland', 'placenta', 'prostate', 'rectum', 'retina', 'salivary gland', 'seminal vesicle', 
+  'skeletal muscle', 'skin', 'small intestine', 'smooth muscle', 'spinal cord', 'spleen', 'stomach', 
+  'testis', 'thymus', 'thyroid gland', 'tongue', 'tonsil', 'urinary bladder', 'vagina']
 
 function showError(msg) {
   const bar = document.getElementById('error-bar');
@@ -334,11 +344,26 @@ function renderDetail(node) {
   const formatExprDetail = (arr) => {
     if (!arr || !Array.isArray(arr)) return 'no data';
     
-    return arr.map((v, i) => {
-      const val = (v !== null && v !== undefined) ? Number(v).toFixed(2) : 'null';
-      return `<div style="font-size:11px; padding:2px 0;">tissue ${i}: <strong>${val}</strong></div>`;
+    const combined = arr.map((v, i) => ({
+      name: tissues[i] || `unknown[${i}]`,
+      val: (v !== null && v !== undefined) ? Number(v) : null
+    }));
+
+    combined.sort((a, b) => {
+      if (a.val === null) return 1;
+      if (b.val === null) return -1;
+      return b.val - a.val;
+    });
+
+    return combined.map(item => {
+      const displayVal = item.val !== null ? item.val.toFixed(2) : 'null';
+      return `
+        <div style="display: flex; justify-content: space-between; font-size:11px; padding:2px 0; border-bottom: 1px solid #333;">
+          <span>${item.name}:</span>
+          <strong style="color: var(--accent);">${displayVal}</strong>
+        </div>`;
     }).join('');
-  };
+  }; 
 
   if (n.is_clique) {
     detail.innerHTML = `
@@ -347,7 +372,11 @@ function renderDetail(node) {
       <div class="row"><span>members</span><span class="val">${n.member_count ?? '—'}</span></div>
       <div class="row"><span>avg expr</span><span class="val" style="font-size:11px;">${formatExprArray(n.expression)}</span></div>
       <div style="margin-top:6px; padding:8px; background:var(--surface); border-radius:4px; border-left:2px solid var(--accent);">
-        <div style="font-size:10px; color:var(--text-secondary); margin-bottom:4px;">Expression by tissue:</div>
+      <div style="display: flex; justify-content: space-between; font-size:10px; color:var(--text-secondary); margin-bottom:4px; border-bottom: 1px solid var(--accent);">
+        <span>Tissue</span>
+        <span>Expression (Sorted ↓)</span>
+      </div>  
+      <div style="font-size:10px; color:var(--text-secondary); margin-bottom:4px;">Expression by tissue:</div>
         ${formatExprDetail(n.expression)}
       </div>
       <div class="row"><span>x</span><span class="val">${Number(n.x).toFixed(4)}</span></div>
@@ -363,7 +392,11 @@ function renderDetail(node) {
       <div class="row"><span>label</span><span class="val">${(n.label || '—').slice(0, 16)}</span></div>
       <div class="row"><span>avg expr</span><span class="val" style="font-size:11px;">${formatExprArray(n.expression)}</span></div>
       <div style="margin-top:6px; padding:8px; background:var(--surface); border-radius:4px; border-left:2px solid var(--accent);">
-        <div style="font-size:10px; color:var(--text-secondary); margin-bottom:4px;">Expression by tissue:</div>
+      <div style="display: flex; justify-content: space-between; font-size:10px; color:var(--text-secondary); margin-bottom:4px; border-bottom: 1px solid var(--accent);">
+        <span>Tissue</span>
+        <span>Expression (Sorted ↓)</span>
+      </div>
+      <div style="font-size:10px; color:var(--text-secondary); margin-bottom:4px;">Expression by tissue:</div>
         ${formatExprDetail(n.expression)}
       </div>
       <div class="row"><span>x</span><span class="val">${Number(n.x).toFixed(4)}</span></div>

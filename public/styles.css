@@ -77,6 +77,10 @@ aside {
     flex-direction: column;
     flex-shrink: 0;
     overflow: hidden;
+    height: 100vh; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    -webkit-overflow-scrolling: touch;
 }
 
 .panel-section {
