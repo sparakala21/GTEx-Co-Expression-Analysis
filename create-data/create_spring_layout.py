@@ -10,6 +10,7 @@ def export_layout_to_csv(layout, filename):
     df.to_csv(filename, index_label='node')
 
 if __name__ == "__main__":
-    G = nx.read_gexf("GTEx_PMFG.gexf")
+    G = nx.read_gexf("../data/GTEx_PMFG.gexf")
+    print(f"Graph loaded with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges.")
     layout = create_layout(G)
-    export_layout_to_csv(layout, "GTEx_PMFG_layout.csv")
+    export_layout_to_csv(layout, "../data/GTEx_PMFG_spring_layout.csv")

@@ -17,7 +17,6 @@ def _pcp_worker(args):
     G_test = nx.Graph()
     G_test.add_edges_from(base_edge_list)
     G_test.add_edge(u, v)
-    # Boyer-Myrvold is the default algorithm here
     is_planar, _ = check_planarity(G_test, counterexample=False)
     return is_planar, u, v, data
 
@@ -33,7 +32,7 @@ def main():
     global interrupted
     signal.signal(signal.SIGINT, signal_handler)
 
-    parser = argparse.ArgumentParser(description='PMFG Builder (NetworkX Optimized)')
+    parser = argparse.ArgumentParser(description='PMFG Builder')
     parser.add_argument('--input', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--cores', type=int, default=cpu_count())

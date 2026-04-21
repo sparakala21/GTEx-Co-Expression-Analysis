@@ -29,11 +29,11 @@ def create_layout_from_consensus(consensus_file):
     # Rename 'Gene_name' to 'node'
     layout_df = layout_df.rename(columns={'Gene_name': 'node'})
     
-    # Select ONLY node, x, and y (this effectively "gets rid of" the Gene column)
     layout_df = layout_df[['node', 'x', 'y']]
 
-    
-    
+    #normalize x and y to [0, 1]
+    layout_df['x'] = (layout_df['x'] - layout_df['x'].min()) / (layout_df['x'].max() - layout_df['x'].min())
+    layout_df['y'] = (layout_df['y'] - layout_df['y'].min()) / (layout_df['y'].max() - layout_df['y'].min())
     return layout_df
 
 if __name__ == "__main__":
