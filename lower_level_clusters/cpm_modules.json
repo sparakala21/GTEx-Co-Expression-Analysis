@@ -1,0 +1,3187 @@
+{
+    "clique_3_0": [
+        "A1BG",
+        "F9",
+        "PRAMEF10"
+    ],
+    "clique_3_1": [
+        "ABCB11",
+        "APOC4",
+        "CPN1"
+    ],
+    "clique_3_2": [
+        "ABCB4",
+        "CFHR3",
+        "ITIH1"
+    ],
+    "clique_3_3": [
+        "ACOT12",
+        "AGXT",
+        "DNMT3L"
+    ],
+    "clique_3_4": [
+        "ACSM2A",
+        "ACSM2B",
+        "CYP4A11"
+    ],
+    "clique_3_5": [
+        "ADH1A",
+        "C4BPB",
+        "F13B"
+    ],
+    "clique_3_6": [
+        "ADH4",
+        "APOC3",
+        "C8G"
+    ],
+    "clique_3_7": [
+        "AFM",
+        "ANGPTL3",
+        "KNG1"
+    ],
+    "clique_3_8": [
+        "AFP",
+        "AKR1D1",
+        "CYP2A6"
+    ],
+    "clique_3_9": [
+        "AHSG",
+        "APOA5",
+        "CFHR2"
+    ],
+    "clique_3_10": [
+        "AKR1C4",
+        "AMBP",
+        "APCS"
+    ],
+    "clique_3_11": [
+        "AKR1C8",
+        "C9",
+        "INHBC"
+    ],
+    "clique_3_12": [
+        "ALB",
+        "APOH",
+        "FGA"
+    ],
+    "clique_3_13": [
+        "ANGPTL6",
+        "CLEC1B",
+        "IL27"
+    ],
+    "clique_3_14": [
+        "ANGPTL8",
+        "LBP",
+        "ACSM5"
+    ],
+    "clique_3_15": [
+        "APOA2",
+        "HAO1",
+        "ORM2"
+    ],
+    "clique_3_16": [
+        "APOF",
+        "CYP7A1",
+        "MBL2"
+    ],
+    "clique_3_17": [
+        "ARID3C",
+        "F7",
+        "UROC1"
+    ],
+    "clique_3_18": [
+        "ASGR1",
+        "HGFAC",
+        "SEBOX"
+    ],
+    "clique_3_19": [
+        "ASGR2",
+        "BAAT",
+        "C8A"
+    ],
+    "clique_3_20": [
+        "ATF5",
+        "CCL16",
+        "SLC22A1"
+    ],
+    "clique_3_21": [
+        "C4BPA",
+        "C8B",
+        "CPB2"
+    ],
+    "clique_3_22": [
+        "C5",
+        "CYP3A43",
+        "EPO"
+    ],
+    "clique_3_23": [
+        "CA5A",
+        "CYP26A1",
+        "ZC3H13"
+    ],
+    "clique_3_24": [
+        "CFHR1",
+        "FGB",
+        "SERPINC1"
+    ],
+    "clique_3_25": [
+        "CFHR4",
+        "CFHR5",
+        "SERPINA7"
+    ],
+    "clique_3_26": [
+        "CHST13",
+        "LECT2",
+        "MIP"
+    ],
+    "clique_3_27": [
+        "CLDN14",
+        "CYP8B1",
+        "HRG"
+    ],
+    "clique_3_28": [
+        "COLEC10",
+        "CYP1A2",
+        "GDF2"
+    ],
+    "clique_3_29": [
+        "CYP2A7",
+        "FETUB",
+        "GYS2"
+    ],
+    "clique_3_30": [
+        "CYP2B6",
+        "PLA2G12B",
+        "TMEM82"
+    ],
+    "clique_3_31": [
+        "CYP2C19",
+        "CYP2C9",
+        "ABCG8"
+    ],
+    "clique_3_32": [
+        "CYP2C8",
+        "IGFALS",
+        "NPW"
+    ],
+    "clique_3_33": [
+        "CYP2D6",
+        "KDM8",
+        "UGT1A3"
+    ],
+    "clique_3_34": [
+        "CYP2E1",
+        "F12",
+        "RDH16"
+    ],
+    "clique_3_35": [
+        "DHODH",
+        "FGF21",
+        "SLC38A4"
+    ],
+    "clique_3_36": [
+        "FGG",
+        "GCKR",
+        "VTN"
+    ],
+    "clique_3_37": [
+        "GALP",
+        "PZP",
+        "SLC13A5"
+    ],
+    "clique_3_38": [
+        "GFRAL",
+        "KLB",
+        "PPP2R1B"
+    ],
+    "clique_3_39": [
+        "GLTPD2",
+        "NR1I3",
+        "PROC"
+    ],
+    "clique_3_40": [
+        "INHBE",
+        "ITIH4",
+        "SPRYD4"
+    ],
+    "clique_3_41": [
+        "ITIH2",
+        "SLC10A1",
+        "SLCO1B1"
+    ],
+    "clique_3_42": [
+        "MMUT",
+        "ACY1",
+        "EHHADH"
+    ],
+    "clique_3_43": [
+        "OR4K17",
+        "SERPINA10",
+        "SLC22A25"
+    ],
+    "clique_3_44": [
+        "PLG",
+        "SLC22A7",
+        "UPB1"
+    ],
+    "clique_3_45": [
+        "PRSS53",
+        "SS18L1",
+        "PLGLB1"
+    ],
+    "clique_3_46": [
+        "RFPL4A",
+        "RFPL4AL1",
+        "SPDYC"
+    ],
+    "clique_3_47": [
+        "RIPPLY1",
+        "ACAD11",
+        "HPD"
+    ],
+    "clique_3_48": [
+        "SAA4",
+        "SERPINA11",
+        "SAA2"
+    ],
+    "clique_3_49": [
+        "SERPIND1",
+        "SLCO1B3",
+        "GNG5B"
+    ],
+    "clique_3_50": [
+        "SMLR1",
+        "ABCC2",
+        "G6PC1"
+    ],
+    "clique_3_51": [
+        "TTC36",
+        "AGMO",
+        "CYP4F2"
+    ],
+    "clique_3_52": [
+        "A1CF",
+        "ADH6",
+        "ANKS4B"
+    ],
+    "clique_3_53": [
+        "ABCD3",
+        "DERA",
+        "SEPHS2"
+    ],
+    "clique_3_54": [
+        "ABCG5",
+        "APOA4",
+        "CREB3L3"
+    ],
+    "clique_3_55": [
+        "ACY3",
+        "ALDOB",
+        "HNF1A"
+    ],
+    "clique_3_56": [
+        "ADGRG7",
+        "MOGAT2",
+        "MOGAT3"
+    ],
+    "clique_3_57": [
+        "ADH1C",
+        "LGALS4",
+        "MUC13"
+    ],
+    "clique_3_58": [
+        "AKR7A3",
+        "PBLD",
+        "SGK2"
+    ],
+    "clique_3_59": [
+        "AKR7L",
+        "FMO5",
+        "FOXA3"
+    ],
+    "clique_3_60": [
+        "AMN",
+        "PCK2",
+        "TRIM15"
+    ],
+    "clique_3_61": [
+        "ANPEP",
+        "HSD17B11",
+        "CPT1A"
+    ],
+    "clique_3_62": [
+        "APOB",
+        "LBX2",
+        "OTC"
+    ],
+    "clique_3_63": [
+        "ARSL",
+        "HNF1B",
+        "SLC3A1"
+    ],
+    "clique_3_64": [
+        "ASL",
+        "GLYCTK",
+        "SERPINA1"
+    ],
+    "clique_3_65": [
+        "CCL15",
+        "CDHR5",
+        "CLRN3"
+    ],
+    "clique_3_66": [
+        "CDHR2",
+        "ENTPD8",
+        "HNF4G"
+    ],
+    "clique_3_67": [
+        "CES3",
+        "HNF4A",
+        "SLC10A5"
+    ],
+    "clique_3_68": [
+        "CPT2",
+        "AK2",
+        "ETFA"
+    ],
+    "clique_3_69": [
+        "CYP3A4",
+        "IGSF23",
+        "SLC25A15"
+    ],
+    "clique_3_70": [
+        "CYP3A5",
+        "ABCC3",
+        "GPX2"
+    ],
+    "clique_3_71": [
+        "DNAJC22",
+        "HGD",
+        "KIF12"
+    ],
+    "clique_3_72": [
+        "EFNA2",
+        "NR1I2",
+        "SLC30A10"
+    ],
+    "clique_3_73": [
+        "F11",
+        "GSTA2",
+        "NR0B2"
+    ],
+    "clique_3_74": [
+        "FAHD1",
+        "PHYH",
+        "CMBL"
+    ],
+    "clique_3_75": [
+        "FAM151A",
+        "NAT8",
+        "AGXT2"
+    ],
+    "clique_3_76": [
+        "FMO4",
+        "HAAO",
+        "CRYZ"
+    ],
+    "clique_3_77": [
+        "GBA3",
+        "UGT2B7",
+        "SLC23A1"
+    ],
+    "clique_3_78": [
+        "GIPC2",
+        "PHETA1",
+        "CARD10"
+    ],
+    "clique_3_79": [
+        "GUCA2B",
+        "ABHD3",
+        "GSDMB"
+    ],
+    "clique_3_80": [
+        "HSD17B2",
+        "B3GNT3",
+        "ELF3"
+    ],
+    "clique_3_81": [
+        "LRRC19",
+        "PDZD3",
+        "SLC6A19"
+    ],
+    "clique_3_82": [
+        "MEP1B",
+        "SLC35G1",
+        "ALPI"
+    ],
+    "clique_3_83": [
+        "NAT8B",
+        "SLC7A9",
+        "SLC10A2"
+    ],
+    "clique_3_84": [
+        "NPC1L1",
+        "TM4SF4",
+        "AADAC"
+    ],
+    "clique_3_85": [
+        "NR1H4",
+        "SLC2A2",
+        "VNN1"
+    ],
+    "clique_3_86": [
+        "NR5A2",
+        "SLC17A4",
+        "SLC39A5"
+    ],
+    "clique_3_87": [
+        "PKLR",
+        "TRIM10",
+        "CYP4F3"
+    ],
+    "clique_3_88": [
+        "SLC37A4",
+        "OCEL1",
+        "SAT2"
+    ],
+    "clique_3_89": [
+        "SPINK1",
+        "REG1A",
+        "REG1B"
+    ],
+    "clique_3_90": [
+        "TBX10",
+        "ATOH1",
+        "CDX2"
+    ],
+    "clique_3_91": [
+        "UGT2B17",
+        "ZG16",
+        "CDX1"
+    ],
+    "clique_3_92": [
+        "A2M",
+        "ADGRL2",
+        "MYO1B"
+    ],
+    "clique_3_93": [
+        "ACTA2",
+        "AOC3",
+        "RBPMS"
+    ],
+    "clique_3_94": [
+        "ADAMTS1",
+        "COL4A2",
+        "VGLL3"
+    ],
+    "clique_3_95": [
+        "ADAMTSL3",
+        "INMT",
+        "NID1"
+    ],
+    "clique_3_96": [
+        "ADGRL4",
+        "PTPRB",
+        "CAVIN2"
+    ],
+    "clique_3_97": [
+        "ADH1B",
+        "C1R",
+        "C1S"
+    ],
+    "clique_3_98": [
+        "ADH5",
+        "CALD1",
+        "ALDH1B1"
+    ],
+    "clique_3_99": [
+        "APOL1",
+        "COL4A1",
+        "PHLDB2"
+    ],
+    "clique_3_100": [
+        "AXL",
+        "EHD2",
+        "RRAS"
+    ],
+    "clique_3_101": [
+        "BGN",
+        "TGM2",
+        "SERPINH1"
+    ],
+    "clique_3_102": [
+        "CALCRL",
+        "LDB2",
+        "FGD5"
+    ],
+    "clique_3_103": [
+        "CAV1",
+        "CAV2",
+        "FAT4"
+    ],
+    "clique_3_104": [
+        "CCN2",
+        "COL6A2",
+        "FBLN5"
+    ],
+    "clique_3_105": [
+        "COL14A1",
+        "COL5A2",
+        "COL1A2"
+    ],
+    "clique_3_106": [
+        "COPZ2",
+        "CAVIN1",
+        "TINAGL1"
+    ],
+    "clique_3_107": [
+        "CPED1",
+        "ITGB1",
+        "ANO6"
+    ],
+    "clique_3_108": [
+        "CRIM1",
+        "EPAS1",
+        "CDH5"
+    ],
+    "clique_3_109": [
+        "CRK",
+        "FERMT2",
+        "SCARB2"
+    ],
+    "clique_3_110": [
+        "CTSO",
+        "HFE",
+        "HNMT"
+    ],
+    "clique_3_111": [
+        "FSTL1",
+        "KIRREL1",
+        "PXDN"
+    ],
+    "clique_3_112": [
+        "FZD4",
+        "ARHGEF15",
+        "GJA4"
+    ],
+    "clique_3_113": [
+        "GNG12",
+        "SNX7",
+        "FBLIM1"
+    ],
+    "clique_3_114": [
+        "ITGA1",
+        "LIMS2",
+        "MYL9"
+    ],
+    "clique_3_115": [
+        "ITGB5",
+        "PXDC1",
+        "ACKR3"
+    ],
+    "clique_3_116": [
+        "LAMB2",
+        "MGP",
+        "TEAD2"
+    ],
+    "clique_3_117": [
+        "LUM",
+        "COL3A1",
+        "COL6A3"
+    ],
+    "clique_3_118": [
+        "LYVE1",
+        "MRC1",
+        "FOLR2"
+    ],
+    "clique_3_119": [
+        "NNMT",
+        "SERPING1",
+        "TFPI"
+    ],
+    "clique_3_120": [
+        "OSMR",
+        "SERPINE1",
+        "PCOLCE"
+    ],
+    "clique_3_121": [
+        "PARVA",
+        "STARD13",
+        "WWTR1"
+    ],
+    "clique_3_122": [
+        "PPIC",
+        "SH3D19",
+        "LAMB1"
+    ],
+    "clique_3_123": [
+        "RBMS3",
+        "PEAR1",
+        "NPR1"
+    ],
+    "clique_3_124": [
+        "SLC39A1",
+        "TCIM",
+        "LTBR"
+    ],
+    "clique_3_125": [
+        "TBX2",
+        "LRRC32",
+        "SMAD6"
+    ],
+    "clique_3_126": [
+        "ZMPSTE24",
+        "RIPK1",
+        "GOLPH3"
+    ],
+    "clique_3_127": [
+        "A2ML1",
+        "CNFN",
+        "ENDOU"
+    ],
+    "clique_3_128": [
+        "ABCA12",
+        "KPRP",
+        "SPRR2G"
+    ],
+    "clique_3_129": [
+        "ACER1",
+        "DSG1",
+        "LY6G6C"
+    ],
+    "clique_3_130": [
+        "ADGRF4",
+        "CAPNS2",
+        "CLCA2"
+    ],
+    "clique_3_131": [
+        "ADH7",
+        "DEFB4A",
+        "LYPD2"
+    ],
+    "clique_3_132": [
+        "ALDH3B2",
+        "ANXA8",
+        "ANXA8L1"
+    ],
+    "clique_3_133": [
+        "ALOX12",
+        "CRCT1",
+        "KRT6C"
+    ],
+    "clique_3_134": [
+        "ALOX12B",
+        "KLK9",
+        "PLA2G4E"
+    ],
+    "clique_3_135": [
+        "BNIPL",
+        "TMEM40",
+        "ZNF750"
+    ],
+    "clique_3_136": [
+        "CALML3",
+        "DEFB103A",
+        "KRT78"
+    ],
+    "clique_3_137": [
+        "CALML5",
+        "KLK5",
+        "KRTDAP"
+    ],
+    "clique_3_138": [
+        "CAPN14",
+        "DEFB104B",
+        "LEXM"
+    ],
+    "clique_3_139": [
+        "CARD14",
+        "FAM83C",
+        "FZD10"
+    ],
+    "clique_3_140": [
+        "CD164L2",
+        "KLK7",
+        "KLK8"
+    ],
+    "clique_3_141": [
+        "CERS3",
+        "SPRR2B",
+        "SPRR2D"
+    ],
+    "clique_3_142": [
+        "CLDN17",
+        "CRNN",
+        "KLK12"
+    ],
+    "clique_3_143": [
+        "CLIC3",
+        "FAM25A",
+        "SCEL"
+    ],
+    "clique_3_144": [
+        "CPA4",
+        "FAM25G",
+        "LGALS7"
+    ],
+    "clique_3_145": [
+        "CRYBG2",
+        "EPHX3",
+        "GRHL3"
+    ],
+    "clique_3_146": [
+        "CSTA",
+        "IVL",
+        "LYPD3"
+    ],
+    "clique_3_147": [
+        "CSTB",
+        "MUC21",
+        "PRSS27"
+    ],
+    "clique_3_148": [
+        "CYP4F22",
+        "EVPLL",
+        "PLEKHN1"
+    ],
+    "clique_3_149": [
+        "CYSRT1",
+        "TGM1",
+        "VSIG10L"
+    ],
+    "clique_3_150": [
+        "DEFB4B",
+        "RAET1L",
+        "UGT1A7"
+    ],
+    "clique_3_151": [
+        "DSC3",
+        "GRHL1",
+        "KRT80"
+    ],
+    "clique_3_152": [
+        "DSG3",
+        "KRT6B",
+        "SPRR2E"
+    ],
+    "clique_3_153": [
+        "EPGN",
+        "FAM83A",
+        "PADI1"
+    ],
+    "clique_3_154": [
+        "EVPL",
+        "GJB2",
+        "MAB21L4"
+    ],
+    "clique_3_155": [
+        "FAM25C",
+        "SDR9C7",
+        "TGM5"
+    ],
+    "clique_3_156": [
+        "FOXN1",
+        "MT4",
+        "SERPINB12"
+    ],
+    "clique_3_157": [
+        "GJB3",
+        "GJB5",
+        "NECTIN4"
+    ],
+    "clique_3_158": [
+        "GLTP",
+        "NIPAL4",
+        "ELOVL1"
+    ],
+    "clique_3_159": [
+        "GPR87",
+        "KRT5",
+        "TRIM29"
+    ],
+    "clique_3_160": [
+        "HEPHL1",
+        "LCE3A",
+        "LCE3E"
+    ],
+    "clique_3_161": [
+        "HS3ST6",
+        "UCN2",
+        "PLA2G4D"
+    ],
+    "clique_3_162": [
+        "IL20RB",
+        "SLC10A6",
+        "TPRG1"
+    ],
+    "clique_3_163": [
+        "IL36A",
+        "TMPRSS11A",
+        "TMPRSS11B"
+    ],
+    "clique_3_164": [
+        "IL36B",
+        "WFDC5",
+        "XKRX"
+    ],
+    "clique_3_165": [
+        "IL36G",
+        "IL36RN",
+        "TMPRSS11F"
+    ],
+    "clique_3_166": [
+        "IPPK",
+        "PLA2G3",
+        "RNF225"
+    ],
+    "clique_3_167": [
+        "KLK10",
+        "KLK13",
+        "SPRR2A"
+    ],
+    "clique_3_168": [
+        "KRT1",
+        "KRT10",
+        "LORICRIN"
+    ],
+    "clique_3_169": [
+        "KRT13",
+        "KRT4",
+        "SPRR3"
+    ],
+    "clique_3_170": [
+        "KRT14",
+        "KRT16",
+        "SBSN"
+    ],
+    "clique_3_171": [
+        "KRT3",
+        "TGM3",
+        "BPIFB2"
+    ],
+    "clique_3_172": [
+        "KRT6A",
+        "SERPINB13",
+        "SERPINB3"
+    ],
+    "clique_3_173": [
+        "LGALS7B",
+        "LTB4R",
+        "LTB4R2"
+    ],
+    "clique_3_174": [
+        "LYPD5",
+        "GAN",
+        "KCNK7"
+    ],
+    "clique_3_175": [
+        "PPL",
+        "JUP",
+        "PERP"
+    ],
+    "clique_3_176": [
+        "PRSS22",
+        "RNF223",
+        "PSCA"
+    ],
+    "clique_3_177": [
+        "RHOV",
+        "TNS4",
+        "TACSTD2"
+    ],
+    "clique_3_178": [
+        "SDR16C5",
+        "SERPINB5",
+        "SFN"
+    ],
+    "clique_3_179": [
+        "SERPINB4",
+        "UPK1A",
+        "PADI3"
+    ],
+    "clique_3_180": [
+        "A3GALT2",
+        "FAM209B",
+        "OR2J3"
+    ],
+    "clique_3_181": [
+        "FAM209A",
+        "FAM221B",
+        "TRBV17"
+    ],
+    "clique_3_182": [
+        "NME8",
+        "SPATC1",
+        "CIB3"
+    ],
+    "clique_3_183": [
+        "OR56A1",
+        "OR8G1",
+        "OR1C1"
+    ],
+    "clique_3_184": [
+        "PP2D1",
+        "TSPAN16",
+        "PHKG2"
+    ],
+    "clique_3_185": [
+        "RFPL3",
+        "CTCFL",
+        "GARIN1A"
+    ],
+    "clique_3_186": [
+        "SLC26A8",
+        "PRM3",
+        "TEX14"
+    ],
+    "clique_3_187": [
+        "TERB1",
+        "FANCD2OS",
+        "MAGEB10"
+    ],
+    "clique_3_188": [
+        "A4GALT",
+        "CAVIN3",
+        "CCDC102A"
+    ],
+    "clique_3_189": [
+        "ABL1",
+        "MXRA8",
+        "PLSCR3"
+    ],
+    "clique_3_190": [
+        "ACTN4",
+        "LMNA",
+        "TRIOBP"
+    ],
+    "clique_3_191": [
+        "ADAMTS15",
+        "ECSCR",
+        "SOX17"
+    ],
+    "clique_3_192": [
+        "ADAMTS2",
+        "ADCY4",
+        "CCN1"
+    ],
+    "clique_3_193": [
+        "AHNAK",
+        "PIAS3",
+        "TENT5B"
+    ],
+    "clique_3_194": [
+        "ATOH8",
+        "CCN5",
+        "TCF7L1"
+    ],
+    "clique_3_195": [
+        "BCAM",
+        "DOCK6",
+        "EFNB1"
+    ],
+    "clique_3_196": [
+        "BCL3",
+        "MGAT1",
+        "NFKB2"
+    ],
+    "clique_3_197": [
+        "BCL7C",
+        "MOB2",
+        "RNH1"
+    ],
+    "clique_3_198": [
+        "CALHM2",
+        "CD248",
+        "PROCR"
+    ],
+    "clique_3_199": [
+        "CCL14",
+        "CCDC71",
+        "C1RL"
+    ],
+    "clique_3_200": [
+        "CD151",
+        "HSPG2",
+        "MYO1C"
+    ],
+    "clique_3_201": [
+        "CD34",
+        "FBLN2",
+        "MMRN2"
+    ],
+    "clique_3_202": [
+        "CEBPD",
+        "IFITM2",
+        "KCNJ8"
+    ],
+    "clique_3_203": [
+        "CFD",
+        "CYP4B1",
+        "PRRX2"
+    ],
+    "clique_3_204": [
+        "CLCF1",
+        "IL15RA",
+        "CCL23"
+    ],
+    "clique_3_205": [
+        "CLEC14A",
+        "HYAL2",
+        "TIE1"
+    ],
+    "clique_3_206": [
+        "CRISPLD2",
+        "KANK2",
+        "COL5A1"
+    ],
+    "clique_3_207": [
+        "CYB5R3",
+        "LGALS1",
+        "RHOB"
+    ],
+    "clique_3_208": [
+        "DES",
+        "PDLIM7",
+        "SMTN"
+    ],
+    "clique_3_209": [
+        "DLL1",
+        "IER3",
+        "NOTCH1"
+    ],
+    "clique_3_210": [
+        "ELN",
+        "PDGFRB",
+        "FZD1"
+    ],
+    "clique_3_211": [
+        "EMILIN1",
+        "RCN3",
+        "STAB1"
+    ],
+    "clique_3_212": [
+        "ENG",
+        "CLEC3B",
+        "SHE"
+    ],
+    "clique_3_213": [
+        "EPHB4",
+        "MVP",
+        "TNFRSF1A"
+    ],
+    "clique_3_214": [
+        "FAM43A",
+        "HSPA12B",
+        "NOS3"
+    ],
+    "clique_3_215": [
+        "FHIP2B",
+        "RGL2",
+        "TAF1C"
+    ],
+    "clique_3_216": [
+        "FLII",
+        "PNPLA2",
+        "POLR3E"
+    ],
+    "clique_3_217": [
+        "FSTL3",
+        "SCARF2",
+        "SYDE1"
+    ],
+    "clique_3_218": [
+        "GAS6",
+        "ISLR",
+        "SNED1"
+    ],
+    "clique_3_219": [
+        "GGT5",
+        "ID3",
+        "TMEM204"
+    ],
+    "clique_3_220": [
+        "H2AJ",
+        "HMG20B",
+        "TRADD"
+    ],
+    "clique_3_221": [
+        "HSPB1",
+        "ITPKC",
+        "MAP3K6"
+    ],
+    "clique_3_222": [
+        "HTRA3",
+        "OSR1",
+        "PODN"
+    ],
+    "clique_3_223": [
+        "IER5L",
+        "CDKN1C",
+        "EGFL8"
+    ],
+    "clique_3_224": [
+        "KANK3",
+        "NOTCH4",
+        "SOX18"
+    ],
+    "clique_3_225": [
+        "KLF2",
+        "PML",
+        "RELA"
+    ],
+    "clique_3_226": [
+        "LRRN4CL",
+        "TWIST2",
+        "RAI2"
+    ],
+    "clique_3_227": [
+        "METRNL",
+        "VASN",
+        "IFNGR2"
+    ],
+    "clique_3_228": [
+        "MRGPRF",
+        "TAGLN",
+        "TGFB1I1"
+    ],
+    "clique_3_229": [
+        "NFATC4",
+        "SIX5",
+        "OBSL1"
+    ],
+    "clique_3_230": [
+        "PIM3",
+        "HDAC10",
+        "DUS1L"
+    ],
+    "clique_3_231": [
+        "PLAC9",
+        "SOD3",
+        "ECRG4"
+    ],
+    "clique_3_232": [
+        "PRICKLE3",
+        "TMEM109",
+        "ADAMTSL4"
+    ],
+    "clique_3_233": [
+        "REM1",
+        "ANGPT4",
+        "EVC2"
+    ],
+    "clique_3_234": [
+        "RHBDF1",
+        "SOX7",
+        "AMOTL2"
+    ],
+    "clique_3_235": [
+        "S100A6",
+        "TUBB6",
+        "FLNA"
+    ],
+    "clique_3_236": [
+        "SBNO2",
+        "TNXB",
+        "MICA"
+    ],
+    "clique_3_237": [
+        "SLC10A3",
+        "FOSL2",
+        "CD55"
+    ],
+    "clique_3_238": [
+        "SRPX2",
+        "TGFBR3",
+        "OLFML3"
+    ],
+    "clique_3_239": [
+        "STING1",
+        "FXYD5",
+        "TGFB1"
+    ],
+    "clique_3_240": [
+        "TRPM4",
+        "TICAM1",
+        "NAPRT"
+    ],
+    "clique_3_241": [
+        "TSC22D3",
+        "CLEC2B",
+        "NFKBIA"
+    ],
+    "clique_3_242": [
+        "A4GNT",
+        "ATP4A",
+        "CBLIF"
+    ],
+    "clique_3_243": [
+        "ANXA10",
+        "GAST",
+        "OTOR"
+    ],
+    "clique_3_244": [
+        "CHIA",
+        "GKN2",
+        "MUC5AC"
+    ],
+    "clique_3_245": [
+        "GHRL",
+        "GPR142",
+        "TFF2"
+    ],
+    "clique_3_246": [
+        "GKN1",
+        "PGA3",
+        "PGA5"
+    ],
+    "clique_3_247": [
+        "KCNE2",
+        "DAZ2",
+        "PDILT"
+    ],
+    "clique_3_248": [
+        "KCNK16",
+        "CELA2A",
+        "CELA3B"
+    ],
+    "clique_3_249": [
+        "LIPF",
+        "PGC",
+        "PGA4"
+    ],
+    "clique_3_250": [
+        "AAAS",
+        "GCN1",
+        "NOM1"
+    ],
+    "clique_3_251": [
+        "ACIN1",
+        "HNRNPH1",
+        "RBM4"
+    ],
+    "clique_3_252": [
+        "ANKLE2",
+        "DDX27",
+        "NAIF1"
+    ],
+    "clique_3_253": [
+        "ASXL1",
+        "TRIM28",
+        "SF1"
+    ],
+    "clique_3_254": [
+        "ATF1",
+        "HELQ",
+        "PPP6R3"
+    ],
+    "clique_3_255": [
+        "BCL2L12",
+        "DHX15",
+        "HNRNPF"
+    ],
+    "clique_3_256": [
+        "BUD13",
+        "RIOK1",
+        "SMC3"
+    ],
+    "clique_3_257": [
+        "CCDC174",
+        "QRICH1",
+        "ZNF526"
+    ],
+    "clique_3_258": [
+        "CNOT1",
+        "ELAVL1",
+        "GLE1"
+    ],
+    "clique_3_259": [
+        "DDX11",
+        "NFATC2IP",
+        "PPP4R3A"
+    ],
+    "clique_3_260": [
+        "DDX46",
+        "NIPBL",
+        "ZC3H11A"
+    ],
+    "clique_3_261": [
+        "EIF4B",
+        "RSL1D1",
+        "WDR70"
+    ],
+    "clique_3_262": [
+        "HDAC3",
+        "KRR1",
+        "YARS2"
+    ],
+    "clique_3_263": [
+        "KDM5C",
+        "ARID1B",
+        "ZFYVE26"
+    ],
+    "clique_3_264": [
+        "LIG3",
+        "MAP3K4",
+        "KDM1A"
+    ],
+    "clique_3_265": [
+        "METTL17",
+        "PMPCB",
+        "TFB2M"
+    ],
+    "clique_3_266": [
+        "PDCD11",
+        "SCAF4",
+        "POLR3C"
+    ],
+    "clique_3_267": [
+        "POLG2",
+        "MED26",
+        "TBP"
+    ],
+    "clique_3_268": [
+        "RINT1",
+        "CNOT7",
+        "POLR2B"
+    ],
+    "clique_3_269": [
+        "SF3A1",
+        "ZSCAN25",
+        "ZNF407"
+    ],
+    "clique_3_270": [
+        "TOP3B",
+        "ADAT2",
+        "ZNF700"
+    ],
+    "clique_3_271": [
+        "TRAPPC11",
+        "SETD2",
+        "ELOA"
+    ],
+    "clique_3_272": [
+        "TTC27",
+        "METTL25",
+        "STT3B"
+    ],
+    "clique_3_273": [
+        "XRCC6",
+        "FIP1L1",
+        "TEX10"
+    ],
+    "clique_3_274": [
+        "ZBTB48",
+        "GEMIN4",
+        "GMPS"
+    ],
+    "clique_3_275": [
+        "ZNF280D",
+        "VPS13B",
+        "PBRM1"
+    ],
+    "clique_3_276": [
+        "ZNF384",
+        "MED23",
+        "LATS1"
+    ],
+    "clique_3_277": [
+        "AACS",
+        "MUCL1",
+        "SCGB2A2"
+    ],
+    "clique_3_278": [
+        "AADACL2",
+        "ACTBL2",
+        "KRT34"
+    ],
+    "clique_3_279": [
+        "AADACL3",
+        "KRT28",
+        "LAMB4"
+    ],
+    "clique_3_280": [
+        "ACCSL",
+        "KRT33A",
+        "PRR9"
+    ],
+    "clique_3_281": [
+        "ALOXE3",
+        "BPIFC",
+        "LCE4A"
+    ],
+    "clique_3_282": [
+        "ASPRV1",
+        "FLG2",
+        "LCE1C"
+    ],
+    "clique_3_283": [
+        "AWAT1",
+        "AWAT2",
+        "CLEC2A"
+    ],
+    "clique_3_284": [
+        "BLMH",
+        "KRT33B",
+        "KRT75"
+    ],
+    "clique_3_285": [
+        "CARD18",
+        "FLG",
+        "LIPK"
+    ],
+    "clique_3_286": [
+        "CCL27",
+        "KRT77",
+        "LCE1B"
+    ],
+    "clique_3_287": [
+        "CDX4",
+        "GOLGA6L26",
+        "SCYGR3"
+    ],
+    "clique_3_288": [
+        "DCT",
+        "KRT25",
+        "TYR"
+    ],
+    "clique_3_289": [
+        "DGAT2L6",
+        "DSC1",
+        "LIPM"
+    ],
+    "clique_3_290": [
+        "DLX3",
+        "CST6",
+        "TREX2"
+    ],
+    "clique_3_291": [
+        "DSG4",
+        "GPRC5D",
+        "PSORS1C2"
+    ],
+    "clique_3_292": [
+        "GSDMA",
+        "KRT27",
+        "KRT71"
+    ],
+    "clique_3_293": [
+        "HOXC12",
+        "HOXC13",
+        "KRT35"
+    ],
+    "clique_3_294": [
+        "IGFL3",
+        "LCE7A",
+        "MLANA"
+    ],
+    "clique_3_295": [
+        "IL1F10",
+        "KCNJ18",
+        "KLRF2"
+    ],
+    "clique_3_296": [
+        "IL37",
+        "LCE5A",
+        "LCE6A"
+    ],
+    "clique_3_297": [
+        "KLK14",
+        "NKPD1",
+        "VSIG10L2"
+    ],
+    "clique_3_298": [
+        "KRT2",
+        "LCE2B",
+        "LCE2C"
+    ],
+    "clique_3_299": [
+        "KRT32",
+        "SPRR5",
+        "CD207"
+    ],
+    "clique_3_300": [
+        "KRT39",
+        "LYG2",
+        "PLET1"
+    ],
+    "clique_3_301": [
+        "KRT81",
+        "KRT83",
+        "KRT86"
+    ],
+    "clique_3_302": [
+        "KRT82",
+        "SCYGR6",
+        "TCHH"
+    ],
+    "clique_3_303": [
+        "SLC24A5",
+        "SPDYE17",
+        "WFDC3"
+    ],
+    "clique_3_304": [
+        "CALHM4",
+        "PSG7",
+        "LGALS14"
+    ],
+    "clique_3_305": [
+        "AADACL4",
+        "OR51D1",
+        "PRAMEF12"
+    ],
+    "clique_3_306": [
+        "MFRP",
+        "CTXND2",
+        "LMX1A"
+    ],
+    "clique_3_307": [
+        "ADGRA3",
+        "ALDH6A1",
+        "ALDH7A1"
+    ],
+    "clique_3_308": [
+        "DNALI1",
+        "PIERCE1",
+        "B9D1"
+    ],
+    "clique_3_309": [
+        "RABEPK",
+        "SLC27A5",
+        "SDS"
+    ],
+    "clique_3_310": [
+        "AAGAB",
+        "AP5M1",
+        "DARS2"
+    ],
+    "clique_3_311": [
+        "COX7A2",
+        "PLEKHB2",
+        "F8A1"
+    ],
+    "clique_3_312": [
+        "MRPL3",
+        "FASTKD2",
+        "MED20"
+    ],
+    "clique_3_313": [
+        "AAK1",
+        "PCDHA13",
+        "PCDHAC1"
+    ],
+    "clique_3_314": [
+        "PCDHAC2",
+        "PCDHA6",
+        "WDR17"
+    ],
+    "clique_3_315": [
+        "AAMDC",
+        "MRPL33",
+        "NDUFB10"
+    ],
+    "clique_3_316": [
+        "ACACB",
+        "ACOT2",
+        "BCKDK"
+    ],
+    "clique_3_317": [
+        "ACADVL",
+        "HADHA",
+        "MDH2"
+    ],
+    "clique_3_318": [
+        "ACAT1",
+        "PGM1",
+        "ECI2"
+    ],
+    "clique_3_319": [
+        "ADPRHL1",
+        "DHRS7C",
+        "FBXO40"
+    ],
+    "clique_3_320": [
+        "ADSS1",
+        "PGPEP1L",
+        "ABRA"
+    ],
+    "clique_3_321": [
+        "AKT1S1",
+        "MACROD1",
+        "PACSIN3"
+    ],
+    "clique_3_322": [
+        "ALPK3",
+        "NDUFB4",
+        "NFU1"
+    ],
+    "clique_3_323": [
+        "BOD1",
+        "PRPF40B",
+        "TRIM45"
+    ],
+    "clique_3_324": [
+        "C1QTNF9",
+        "KLHL31",
+        "PSMD8"
+    ],
+    "clique_3_325": [
+        "CKMT2",
+        "COX7A1",
+        "HRC"
+    ],
+    "clique_3_326": [
+        "CNBP",
+        "COQ8A",
+        "RAD23A"
+    ],
+    "clique_3_327": [
+        "COA8",
+        "MRPL36",
+        "TRPT1"
+    ],
+    "clique_3_328": [
+        "COQ6",
+        "MTFR1L",
+        "HAX1"
+    ],
+    "clique_3_329": [
+        "COQ9",
+        "NDUFS2",
+        "UQCRC1"
+    ],
+    "clique_3_330": [
+        "COX14",
+        "FIS1",
+        "FMC1"
+    ],
+    "clique_3_331": [
+        "DNAJA3",
+        "MRPL38",
+        "VCP"
+    ],
+    "clique_3_332": [
+        "ECH1",
+        "RCC1L",
+        "ZBED1"
+    ],
+    "clique_3_333": [
+        "ECPAS",
+        "ALDOA",
+        "YIPF7"
+    ],
+    "clique_3_334": [
+        "EIF2B3",
+        "PSMD2",
+        "SMCO1"
+    ],
+    "clique_3_335": [
+        "EIF3K",
+        "COX8A",
+        "HIGD2A"
+    ],
+    "clique_3_336": [
+        "FAM234A",
+        "YIF1A",
+        "KIAA2013"
+    ],
+    "clique_3_337": [
+        "GNPAT",
+        "VGLL2",
+        "ASB12"
+    ],
+    "clique_3_338": [
+        "HADHB",
+        "HSDL2",
+        "NDUFB5"
+    ],
+    "clique_3_339": [
+        "HSPB6",
+        "NEXN",
+        "TPM2"
+    ],
+    "clique_3_340": [
+        "HSPB7",
+        "SLC2A4",
+        "CASQ2"
+    ],
+    "clique_3_341": [
+        "KBTBD13",
+        "KLHL30",
+        "CAV3"
+    ],
+    "clique_3_342": [
+        "KIF13A",
+        "SH3BGR",
+        "CFL2"
+    ],
+    "clique_3_343": [
+        "KLHL21",
+        "TMEM161A",
+        "DNAAF5"
+    ],
+    "clique_3_344": [
+        "MRPL2",
+        "NDUFS8",
+        "COX5B"
+    ],
+    "clique_3_345": [
+        "MTLN",
+        "PRKACA",
+        "DEXI"
+    ],
+    "clique_3_346": [
+        "MYOM1",
+        "MYOT",
+        "PYGM"
+    ],
+    "clique_3_347": [
+        "MYOZ2",
+        "NMRK2",
+        "ANKRD1"
+    ],
+    "clique_3_348": [
+        "NDUFS1",
+        "NDUFS4",
+        "PDHB"
+    ],
+    "clique_3_349": [
+        "NFIC",
+        "SQSTM1",
+        "KLF9"
+    ],
+    "clique_3_350": [
+        "PDK4",
+        "UACA",
+        "LMCD1"
+    ],
+    "clique_3_351": [
+        "PPP2R3A",
+        "CMYA5",
+        "KLHL38"
+    ],
+    "clique_3_352": [
+        "PROB1",
+        "LRRC14B",
+        "ASB10"
+    ],
+    "clique_3_353": [
+        "RNF7",
+        "SURF1",
+        "ROMO1"
+    ],
+    "clique_3_354": [
+        "SLC25A3",
+        "ABCB7",
+        "DLST"
+    ],
+    "clique_3_355": [
+        "SMIM4",
+        "MRPL34",
+        "NECAB3"
+    ],
+    "clique_3_356": [
+        "SPAG7",
+        "TMEM143",
+        "UBE2G2"
+    ],
+    "clique_3_357": [
+        "SYPL2",
+        "APOL5",
+        "ZC3HC1"
+    ],
+    "clique_3_358": [
+        "TCEA3",
+        "IFRD2",
+        "ZBTB42"
+    ],
+    "clique_3_359": [
+        "TMEM120A",
+        "NTMT1",
+        "CRAT"
+    ],
+    "clique_3_360": [
+        "YBX3",
+        "CUL4A",
+        "RBM28"
+    ],
+    "clique_3_361": [
+        "ZNF784",
+        "METAP1D",
+        "GTF2IRD2"
+    ],
+    "clique_3_362": [
+        "ECHDC2",
+        "ECI1",
+        "GPRC5C"
+    ],
+    "clique_3_363": [
+        "EIF2B5",
+        "RPP25L",
+        "GPATCH4"
+    ],
+    "clique_3_364": [
+        "MAEA",
+        "SCAND1",
+        "BOLA1"
+    ],
+    "clique_3_365": [
+        "MFSD3",
+        "NR2F6",
+        "ATP5F1D"
+    ],
+    "clique_3_366": [
+        "NAXD",
+        "ZNF444",
+        "SDHAF1"
+    ],
+    "clique_3_367": [
+        "PMPCA",
+        "CLPP",
+        "MRPL4"
+    ],
+    "clique_3_368": [
+        "TMEM115",
+        "JMJD8",
+        "TMEM187"
+    ],
+    "clique_3_369": [
+        "TMEM129",
+        "GMPR2",
+        "COPA"
+    ],
+    "clique_3_370": [
+        "TMEM203",
+        "TIMM44",
+        "FASTK"
+    ],
+    "clique_3_371": [
+        "ZNF205",
+        "HSF4",
+        "NFKBIL1"
+    ],
+    "clique_3_372": [
+        "ZNF584",
+        "NOL3",
+        "THNSL2"
+    ],
+    "clique_3_373": [
+        "AANAT",
+        "AIPL1",
+        "CPLX4"
+    ],
+    "clique_3_374": [
+        "ARR3",
+        "CACNA1F",
+        "OR2I1P"
+    ],
+    "clique_3_375": [
+        "CNGB3",
+        "DUXB",
+        "GJA10"
+    ],
+    "clique_3_376": [
+        "DNAH17",
+        "INSL6",
+        "TEX12"
+    ],
+    "clique_3_377": [
+        "FRMPD1",
+        "TPRX2",
+        "TRPM1"
+    ],
+    "clique_3_378": [
+        "GNAT2",
+        "GUCY2D",
+        "GNAT1"
+    ],
+    "clique_3_379": [
+        "GPHB5",
+        "OR14A16",
+        "OR6B2"
+    ],
+    "clique_3_380": [
+        "GSG1",
+        "GAGE1",
+        "GSC2"
+    ],
+    "clique_3_381": [
+        "KCNV2",
+        "LRIT1",
+        "SMIM36"
+    ],
+    "clique_3_382": [
+        "MAK",
+        "FRMPD2",
+        "GUCY2F"
+    ],
+    "clique_3_383": [
+        "MATN1",
+        "OPN1MW",
+        "OR1L1"
+    ],
+    "clique_3_384": [
+        "NOXRED1",
+        "POU4F2",
+        "TPRX1"
+    ],
+    "clique_3_385": [
+        "NYX",
+        "SERINC4",
+        "ABCA4"
+    ],
+    "clique_3_386": [
+        "OR1J1",
+        "OR56A4",
+        "OR5B2"
+    ],
+    "clique_3_387": [
+        "PDE6H",
+        "CLUL1",
+        "GNGT1"
+    ],
+    "clique_3_388": [
+        "PPEF2",
+        "RCVRN",
+        "CRX"
+    ],
+    "clique_3_389": [
+        "RAB41",
+        "SAG",
+        "GPR179"
+    ],
+    "clique_3_390": [
+        "RDH8",
+        "GABRR3",
+        "GRM6"
+    ],
+    "clique_3_391": [
+        "TSPAN19",
+        "FAM227A",
+        "HYDIN"
+    ],
+    "clique_3_392": [
+        "UNC119",
+        "LRIT3",
+        "RRH"
+    ],
+    "clique_3_393": [
+        "ZMYND19",
+        "LHX4",
+        "STK35"
+    ],
+    "clique_3_394": [
+        "AAR2",
+        "DDX47",
+        "EIF2D"
+    ],
+    "clique_3_395": [
+        "CDK4",
+        "NPM1",
+        "RPL10A"
+    ],
+    "clique_3_396": [
+        "CYREN",
+        "EIF3I",
+        "SEC11A"
+    ],
+    "clique_3_397": [
+        "DDB2",
+        "STAT6",
+        "FADD"
+    ],
+    "clique_3_398": [
+        "EIF3D",
+        "EIF3M",
+        "PDCD2"
+    ],
+    "clique_3_399": [
+        "ESYT1",
+        "FTSJ3",
+        "TXNIP"
+    ],
+    "clique_3_400": [
+        "LAPTM4A",
+        "KDELR1",
+        "FAM114A1"
+    ],
+    "clique_3_401": [
+        "MTAP",
+        "SLFN12",
+        "MR1"
+    ],
+    "clique_3_402": [
+        "PHYKPL",
+        "NCOA4",
+        "GDI2"
+    ],
+    "clique_3_403": [
+        "SERTAD3",
+        "TGFBR2",
+        "CLIC1"
+    ],
+    "clique_3_404": [
+        "SLC66A3",
+        "TGIF1",
+        "TMEM35B"
+    ],
+    "clique_3_405": [
+        "SMARCE1",
+        "FCF1",
+        "STAG1"
+    ],
+    "clique_3_406": [
+        "TLN1",
+        "ITGA5",
+        "ACOT9"
+    ],
+    "clique_3_407": [
+        "SPACA4",
+        "MROH2B",
+        "TEX43"
+    ],
+    "clique_3_408": [
+        "AARS1",
+        "AHCYL1",
+        "IGIP"
+    ],
+    "clique_3_409": [
+        "AMIGO1",
+        "PFN2",
+        "NGRN"
+    ],
+    "clique_3_410": [
+        "ANKRD46",
+        "MOCS2",
+        "NDUFAF4"
+    ],
+    "clique_3_411": [
+        "B4GAT1",
+        "MAGEF1",
+        "FIZ1"
+    ],
+    "clique_3_412": [
+        "EEF1AKMT1",
+        "COA5",
+        "ZNF32"
+    ],
+    "clique_3_413": [
+        "FTO",
+        "DYNLRB1",
+        "GABARAPL2"
+    ],
+    "clique_3_414": [
+        "KIFBP",
+        "COPS7A",
+        "SHISA4"
+    ],
+    "clique_3_415": [
+        "NT5C3B",
+        "SPRYD3",
+        "SERGEF"
+    ],
+    "clique_3_416": [
+        "ANKZF1",
+        "RHOT2",
+        "NPIPB12"
+    ],
+    "clique_3_417": [
+        "RBM10",
+        "E4F1",
+        "TELO2"
+    ],
+    "clique_3_418": [
+        "AARSD1",
+        "KLHDC3",
+        "SLC4A1AP"
+    ],
+    "clique_3_419": [
+        "ABCF2",
+        "MYADML2",
+        "PPP3CB"
+    ],
+    "clique_3_420": [
+        "AMZ2",
+        "MFF",
+        "TRIM69"
+    ],
+    "clique_3_421": [
+        "ART3",
+        "PGAM2",
+        "ACTN2"
+    ],
+    "clique_3_422": [
+        "CAND2",
+        "FXR2",
+        "PFKM"
+    ],
+    "clique_3_423": [
+        "CCDC28B",
+        "IPO13",
+        "MYL6B"
+    ],
+    "clique_3_424": [
+        "CCSER2",
+        "LSMEM2",
+        "MYH7B"
+    ],
+    "clique_3_425": [
+        "CDK16",
+        "ATG9A",
+        "UBAC1"
+    ],
+    "clique_3_426": [
+        "CLTCL1",
+        "FXR1",
+        "PITX3"
+    ],
+    "clique_3_427": [
+        "CNOT4",
+        "FBXO3",
+        "ZYG11B"
+    ],
+    "clique_3_428": [
+        "CWC15",
+        "ELOC",
+        "PCMT1"
+    ],
+    "clique_3_429": [
+        "DRG1",
+        "NDUFAF7",
+        "TRMT1L"
+    ],
+    "clique_3_430": [
+        "DYRK1B",
+        "FAM220A",
+        "PDCD2L"
+    ],
+    "clique_3_431": [
+        "ERI3",
+        "FAM241B",
+        "HSD11B1L"
+    ],
+    "clique_3_432": [
+        "FAF1",
+        "PRKRA",
+        "EPM2A"
+    ],
+    "clique_3_433": [
+        "FAHD2B",
+        "CTSF",
+        "CGRRF1"
+    ],
+    "clique_3_434": [
+        "GAMT",
+        "UBE2D4",
+        "HINT3"
+    ],
+    "clique_3_435": [
+        "GBX1",
+        "ABCC12",
+        "ARIH1"
+    ],
+    "clique_3_436": [
+        "HEXIM2",
+        "ENDOG",
+        "AP5S1"
+    ],
+    "clique_3_437": [
+        "ILRUN",
+        "NDUFC1",
+        "PDHX"
+    ],
+    "clique_3_438": [
+        "LIAS",
+        "PTCD3",
+        "COQ10A"
+    ],
+    "clique_3_439": [
+        "LPIN1",
+        "CALML6",
+        "CACNA1S"
+    ],
+    "clique_3_440": [
+        "LRRC20",
+        "NT5C1A",
+        "PHKG1"
+    ],
+    "clique_3_441": [
+        "MLF1",
+        "PLAAT1",
+        "CDKL3"
+    ],
+    "clique_3_442": [
+        "MRPL51",
+        "PSMD4",
+        "EIF5B"
+    ],
+    "clique_3_443": [
+        "MYG1",
+        "FUZ",
+        "SPATA20"
+    ],
+    "clique_3_444": [
+        "NDUFA8",
+        "NDUFA12",
+        "MDH1"
+    ],
+    "clique_3_445": [
+        "NT5M",
+        "NAA38",
+        "SNU13"
+    ],
+    "clique_3_446": [
+        "POLR2I",
+        "FAM50B",
+        "DGCR6"
+    ],
+    "clique_3_447": [
+        "PRKN",
+        "SEMA6C",
+        "MAPK12"
+    ],
+    "clique_3_448": [
+        "ST3GAL3",
+        "CASTOR2",
+        "TMEM201"
+    ],
+    "clique_3_449": [
+        "UQCC2",
+        "NDUFAB1",
+        "NDUFB6"
+    ],
+    "clique_3_450": [
+        "VDAC3",
+        "PKIA",
+        "BTBD1"
+    ],
+    "clique_3_451": [
+        "AASDH",
+        "ARL17A",
+        "CCDC66"
+    ],
+    "clique_3_452": [
+        "ALG10",
+        "ALG10B",
+        "LTN1"
+    ],
+    "clique_3_453": [
+        "ATM",
+        "TAF1",
+        "TRIM52"
+    ],
+    "clique_3_454": [
+        "BIRC6",
+        "KMT2A",
+        "STAG2"
+    ],
+    "clique_3_455": [
+        "C2CD3",
+        "SETDB1",
+        "BRPF1"
+    ],
+    "clique_3_456": [
+        "CAPN7",
+        "GON4L",
+        "SHPRH"
+    ],
+    "clique_3_457": [
+        "CSTF1",
+        "MGA",
+        "XPO1"
+    ],
+    "clique_3_458": [
+        "CTR9",
+        "LINS1",
+        "ZMYM1"
+    ],
+    "clique_3_459": [
+        "CUL4B",
+        "GANAB",
+        "TRIM4"
+    ],
+    "clique_3_460": [
+        "DOP1A",
+        "ZNF44",
+        "ZNF658"
+    ],
+    "clique_3_461": [
+        "ELMOD2",
+        "COPB1",
+        "PDIA3"
+    ],
+    "clique_3_462": [
+        "GOLGA8A",
+        "ZNF66",
+        "WDR73"
+    ],
+    "clique_3_463": [
+        "JMJD1C",
+        "CTDSPL2",
+        "RBM12"
+    ],
+    "clique_3_464": [
+        "KLHL9",
+        "ZSCAN12",
+        "ZNF678"
+    ],
+    "clique_3_465": [
+        "LCMT2",
+        "ZKSCAN3",
+        "ZNF616"
+    ],
+    "clique_3_466": [
+        "LRBA",
+        "XIAP",
+        "RBM41"
+    ],
+    "clique_3_467": [
+        "MAP3K1",
+        "PRPF40A",
+        "PLEKHF2"
+    ],
+    "clique_3_468": [
+        "MYNN",
+        "RBM27",
+        "CDK13"
+    ],
+    "clique_3_469": [
+        "NBPF19",
+        "MAP3K2",
+        "NBPF10"
+    ],
+    "clique_3_470": [
+        "NF1",
+        "TTC3",
+        "ZNF37A"
+    ],
+    "clique_3_471": [
+        "NFRKB",
+        "ZCCHC8",
+        "KMT2B"
+    ],
+    "clique_3_472": [
+        "NPAT",
+        "SMARCAD1",
+        "WDR89"
+    ],
+    "clique_3_473": [
+        "PIBF1",
+        "ZNF567",
+        "POT1"
+    ],
+    "clique_3_474": [
+        "PIK3R4",
+        "ZNF268",
+        "ALG11"
+    ],
+    "clique_3_475": [
+        "PUM2",
+        "API5",
+        "PDS5A"
+    ],
+    "clique_3_476": [
+        "QSER1",
+        "INO80",
+        "PRRC2B"
+    ],
+    "clique_3_477": [
+        "RALGAPB",
+        "DCAF1",
+        "GAPVD1"
+    ],
+    "clique_3_478": [
+        "RBM12B",
+        "ZNF699",
+        "BICRAL"
+    ],
+    "clique_3_479": [
+        "RBM23",
+        "ZNF12",
+        "ZNF45"
+    ],
+    "clique_3_480": [
+        "RSBN1L",
+        "ZNF782",
+        "ZSCAN29"
+    ],
+    "clique_3_481": [
+        "SCYL3",
+        "UBXN4",
+        "PIGN"
+    ],
+    "clique_3_482": [
+        "SUPT16H",
+        "DHX9",
+        "CREB1"
+    ],
+    "clique_3_483": [
+        "TIA1",
+        "CREBZF",
+        "ZNF841"
+    ],
+    "clique_3_484": [
+        "ZKSCAN8",
+        "CHD9",
+        "ZNF639"
+    ],
+    "clique_3_485": [
+        "ZNF292",
+        "RSBN1",
+        "UBXN7"
+    ],
+    "clique_3_486": [
+        "ZNF416",
+        "ZNF773",
+        "ZNF134"
+    ],
+    "clique_3_487": [
+        "ZNF674",
+        "KIDINS220",
+        "MKLN1"
+    ],
+    "clique_3_488": [
+        "ZNF770",
+        "HECTD1",
+        "POLR3B"
+    ],
+    "clique_3_489": [
+        "ZNF816",
+        "ZNF701",
+        "ZNF468"
+    ],
+    "clique_3_490": [
+        "AP4S1",
+        "CSMD1",
+        "TRIM37"
+    ],
+    "clique_3_491": [
+        "BRWD1",
+        "GABRG1",
+        "SLC1A2"
+    ],
+    "clique_3_492": [
+        "AASS",
+        "KLF15",
+        "PHYHD1"
+    ],
+    "clique_3_493": [
+        "ASMTL",
+        "DPM3",
+        "MRPL55"
+    ],
+    "clique_3_494": [
+        "BCS1L",
+        "MRPL23",
+        "MRM1"
+    ],
+    "clique_3_495": [
+        "CBY1",
+        "TCEAL4",
+        "ARMCX1"
+    ],
+    "clique_3_496": [
+        "CDIPT",
+        "CTU1",
+        "MED22"
+    ],
+    "clique_3_497": [
+        "CENATAC",
+        "CERS5",
+        "AP5Z1"
+    ],
+    "clique_3_498": [
+        "CISD3",
+        "HSPA1B",
+        "LENG1"
+    ],
+    "clique_3_499": [
+        "CMC1",
+        "ZSWIM7",
+        "NDUFB7"
+    ],
+    "clique_3_500": [
+        "CMC4",
+        "WDR13",
+        "TSR3"
+    ],
+    "clique_3_501": [
+        "COL18A1",
+        "VKORC1",
+        "POFUT2"
+    ],
+    "clique_3_502": [
+        "CSNK2B",
+        "EIF3CL",
+        "SLC25A28"
+    ],
+    "clique_3_503": [
+        "CTTN",
+        "LRFN3",
+        "PCGF2"
+    ],
+    "clique_3_504": [
+        "DDTL",
+        "SLC39A7",
+        "TSEN34"
+    ],
+    "clique_3_505": [
+        "DDX39B",
+        "PPT2",
+        "PRRC2A"
+    ],
+    "clique_3_506": [
+        "DHRS12",
+        "HEXD",
+        "ZNF524"
+    ],
+    "clique_3_507": [
+        "DHRSX",
+        "TMED1",
+        "TMEM150A"
+    ],
+    "clique_3_508": [
+        "EEFSEC",
+        "GPANK1",
+        "LRRC37A"
+    ],
+    "clique_3_509": [
+        "EFHD1",
+        "SLC48A1",
+        "AIF1L"
+    ],
+    "clique_3_510": [
+        "ENKD1",
+        "ZNF446",
+        "LZTFL1"
+    ],
+    "clique_3_511": [
+        "FAM3A",
+        "TMEM256",
+        "JOSD2"
+    ],
+    "clique_3_512": [
+        "FBXO17",
+        "LCAT",
+        "PTMS"
+    ],
+    "clique_3_513": [
+        "GADD45G",
+        "MRPL43",
+        "GPAA1"
+    ],
+    "clique_3_514": [
+        "GSTM2",
+        "VEGFB",
+        "ZNF358"
+    ],
+    "clique_3_515": [
+        "INAFM1",
+        "OSTM1",
+        "PRPF8"
+    ],
+    "clique_3_516": [
+        "MMAB",
+        "ZNHIT1",
+        "DCXR"
+    ],
+    "clique_3_517": [
+        "MT1A",
+        "POLR2L",
+        "ANGPTL4"
+    ],
+    "clique_3_518": [
+        "MTCH1",
+        "P4HTM",
+        "ZSCAN18"
+    ],
+    "clique_3_519": [
+        "NENF",
+        "PHPT1",
+        "GABARAP"
+    ],
+    "clique_3_520": [
+        "NTAN1",
+        "SMURF1",
+        "B3GALT4"
+    ],
+    "clique_3_521": [
+        "NUPR1",
+        "TM9SF1",
+        "ZDHHC1"
+    ],
+    "clique_3_522": [
+        "PTDSS2",
+        "PTPMT1",
+        "NDUFA3"
+    ],
+    "clique_3_523": [
+        "RABAC1",
+        "MIF",
+        "NME3"
+    ],
+    "clique_3_524": [
+        "SELENOM",
+        "TNFSF12",
+        "LZTS2"
+    ],
+    "clique_3_525": [
+        "SLC9A3R2",
+        "TNS2",
+        "BCAR1"
+    ],
+    "clique_3_526": [
+        "STX2",
+        "GNL1",
+        "ARHGEF10"
+    ],
+    "clique_3_527": [
+        "TCTN1",
+        "MORN2",
+        "SWI5"
+    ],
+    "clique_3_528": [
+        "TMEM14C",
+        "TRIM8",
+        "REX1BD"
+    ],
+    "clique_3_529": [
+        "TMEM42",
+        "DNAJB2",
+        "PEX10"
+    ],
+    "clique_3_530": [
+        "TRIM39",
+        "ZSWIM8",
+        "PHRF1"
+    ],
+    "clique_3_531": [
+        "ZNF133",
+        "MTERF2",
+        "DPH1"
+    ],
+    "clique_3_532": [
+        "ANP32B",
+        "PTMA",
+        "HNRNPA1"
+    ],
+    "clique_3_533": [
+        "AATK",
+        "ABCA2",
+        "CNTN2"
+    ],
+    "clique_3_534": [
+        "ABCC8",
+        "CAMK2N2",
+        "ECE2"
+    ],
+    "clique_3_535": [
+        "ACTL6B",
+        "APC2",
+        "JPH3"
+    ],
+    "clique_3_536": [
+        "ADARB2",
+        "OMG",
+        "POU3F2"
+    ],
+    "clique_3_537": [
+        "ADGRA1",
+        "SMIM45",
+        "NRG3"
+    ],
+    "clique_3_538": [
+        "ADGRB1",
+        "FBXL16",
+        "FKBP1B"
+    ],
+    "clique_3_539": [
+        "ADGRB2",
+        "DPF1",
+        "SHISA7"
+    ],
+    "clique_3_540": [
+        "AJM1",
+        "DEAF1",
+        "MAP3K10"
+    ],
+    "clique_3_541": [
+        "ALKBH6",
+        "ANKRD39",
+        "LAGE3"
+    ],
+    "clique_3_542": [
+        "AMER2",
+        "CACNG7",
+        "KCNJ9"
+    ],
+    "clique_3_543": [
+        "APBA2",
+        "ATP6V1G2",
+        "ELAVL3"
+    ],
+    "clique_3_544": [
+        "ARHGDIG",
+        "FUT9",
+        "PDIA2"
+    ],
+    "clique_3_545": [
+        "ARL8A",
+        "PRR7",
+        "RALGDS"
+    ],
+    "clique_3_546": [
+        "ASPHD1",
+        "TMEM151A",
+        "PTPRN2"
+    ],
+    "clique_3_547": [
+        "ATCAY",
+        "LHFPL4",
+        "NRSN1"
+    ],
+    "clique_3_548": [
+        "ATP13A2",
+        "DNAJC5",
+        "PTPRN"
+    ],
+    "clique_3_549": [
+        "B3GAT1",
+        "TNR",
+        "PCDH9"
+    ],
+    "clique_3_550": [
+        "B3GAT2",
+        "LHFPL3",
+        "SLITRK2"
+    ],
+    "clique_3_551": [
+        "BAALC",
+        "GPR37L1",
+        "SLC1A3"
+    ],
+    "clique_3_552": [
+        "BCAN",
+        "STMN4",
+        "VSTM2B"
+    ],
+    "clique_3_553": [
+        "BCL2L2",
+        "TCEAL2",
+        "CKB"
+    ],
+    "clique_3_554": [
+        "BEGAIN",
+        "FBLL1",
+        "KCNQ2"
+    ],
+    "clique_3_555": [
+        "BGLAP",
+        "CEND1",
+        "KIF5A"
+    ],
+    "clique_3_556": [
+        "BRF1",
+        "FRS3",
+        "ZNF428"
+    ],
+    "clique_3_557": [
+        "BRSK1",
+        "DCLK2",
+        "GNAO1"
+    ],
+    "clique_3_558": [
+        "BRSK2",
+        "CTNND2",
+        "KIF1A"
+    ],
+    "clique_3_559": [
+        "BTBD17",
+        "GRIN1",
+        "NCAN"
+    ],
+    "clique_3_560": [
+        "C1QTNF4",
+        "LRRC4B",
+        "PRKAR1B"
+    ],
+    "clique_3_561": [
+        "C2CD2L",
+        "TTBK1",
+        "ASPDH"
+    ],
+    "clique_3_562": [
+        "CACNA1A",
+        "SCRT1",
+        "TMEM151B"
+    ],
+    "clique_3_563": [
+        "CACNG4",
+        "FXYD7",
+        "NTSR2"
+    ],
+    "clique_3_564": [
+        "CADM4",
+        "CA11",
+        "MAGEE1"
+    ],
+    "clique_3_565": [
+        "CALY",
+        "CELF3",
+        "SCG3"
+    ],
+    "clique_3_566": [
+        "CASKIN1",
+        "NCDN",
+        "TTC9B"
+    ],
+    "clique_3_567": [
+        "CCK",
+        "CNIH2",
+        "LY6H"
+    ],
+    "clique_3_568": [
+        "CDK18",
+        "FAM181B",
+        "MOG"
+    ],
+    "clique_3_569": [
+        "CERCAM",
+        "NACAD",
+        "AGPAT4"
+    ],
+    "clique_3_570": [
+        "CHADL",
+        "METRN",
+        "COL9A3"
+    ],
+    "clique_3_571": [
+        "CHST8",
+        "TMEM179",
+        "COL11A2"
+    ],
+    "clique_3_572": [
+        "CMTM5",
+        "HAPLN2",
+        "NECAB1"
+    ],
+    "clique_3_573": [
+        "CNP",
+        "LHPP",
+        "OPALIN"
+    ],
+    "clique_3_574": [
+        "COL20A1",
+        "FSD1",
+        "RFX4"
+    ],
+    "clique_3_575": [
+        "CPLX1",
+        "HAGHL",
+        "TMEM121"
+    ],
+    "clique_3_576": [
+        "DBX2",
+        "OLIG1",
+        "OLIG2"
+    ],
+    "clique_3_577": [
+        "DLL3",
+        "CAMKV",
+        "PCDH8"
+    ],
+    "clique_3_578": [
+        "DNAJC6",
+        "SLC7A14",
+        "SMIM18"
+    ],
+    "clique_3_579": [
+        "DNM1",
+        "RIPPLY2",
+        "ADGRB3"
+    ],
+    "clique_3_580": [
+        "DOHH",
+        "SPHK2",
+        "ABHD17A"
+    ],
+    "clique_3_581": [
+        "DPYSL5",
+        "PCDHA1",
+        "MMD2"
+    ],
+    "clique_3_582": [
+        "DSCAM",
+        "SLITRK1",
+        "ZDHHC22"
+    ],
+    "clique_3_583": [
+        "DYNC1LI2",
+        "TMEM235",
+        "TMEM144"
+    ],
+    "clique_3_584": [
+        "ENHO",
+        "FBXO2",
+        "IGSF8"
+    ],
+    "clique_3_585": [
+        "ERMN",
+        "KLRC2",
+        "MATK"
+    ],
+    "clique_3_586": [
+        "FAM98C",
+        "KIFC2",
+        "PPFIA3"
+    ],
+    "clique_3_587": [
+        "FBXO44",
+        "PCSK1N",
+        "SRCIN1"
+    ],
+    "clique_3_588": [
+        "FEZ1",
+        "GPM6B",
+        "PEA15"
+    ],
+    "clique_3_589": [
+        "GAL3ST1",
+        "SLC5A11",
+        "TMEM229A"
+    ],
+    "clique_3_590": [
+        "GDAP1L1",
+        "CCDC184",
+        "SPTBN4"
+    ],
+    "clique_3_591": [
+        "GDF1",
+        "GRM3",
+        "ANKS1B"
+    ],
+    "clique_3_592": [
+        "GDI1",
+        "GPR162",
+        "PDZD4"
+    ],
+    "clique_3_593": [
+        "GNG3",
+        "NSG2",
+        "STMN2"
+    ],
+    "clique_3_594": [
+        "GPR62",
+        "NKAIN2",
+        "RNF220"
+    ],
+    "clique_3_595": [
+        "GPRIN1",
+        "UNC5A",
+        "SVOP"
+    ],
+    "clique_3_596": [
+        "GUK1",
+        "PAQR3",
+        "TMEM160"
+    ],
+    "clique_3_597": [
+        "HAPLN4",
+        "CHN2",
+        "DAB1"
+    ],
+    "clique_3_598": [
+        "HEPN1",
+        "CHRNA4",
+        "HEPACAM"
+    ],
+    "clique_3_599": [
+        "HIP1R",
+        "PAXX",
+        "MFSD12"
+    ],
+    "clique_3_600": [
+        "HRH3",
+        "KANTR",
+        "RIT2"
+    ],
+    "clique_3_601": [
+        "ITPK1",
+        "NACC2",
+        "ZSWIM9"
+    ],
+    "clique_3_602": [
+        "KCNA1",
+        "SYT3",
+        "GABRD"
+    ],
+    "clique_3_603": [
+        "KCNK10",
+        "SOWAHA",
+        "GABRA2"
+    ],
+    "clique_3_604": [
+        "KCNK12",
+        "KCNC1",
+        "PCDHA5"
+    ],
+    "clique_3_605": [
+        "KCNMB4",
+        "MT3",
+        "TPPP"
+    ],
+    "clique_3_606": [
+        "KCNQ3",
+        "RASL10A",
+        "C2CD4C"
+    ],
+    "clique_3_607": [
+        "KLHL32",
+        "PRR18",
+        "KIF6"
+    ],
+    "clique_3_608": [
+        "LGI3",
+        "DLG2",
+        "RUFY3"
+    ],
+    "clique_3_609": [
+        "LRFN1",
+        "RTN4R",
+        "SPRN"
+    ],
+    "clique_3_610": [
+        "MAG",
+        "MOBP",
+        "TMEM88B"
+    ],
+    "clique_3_611": [
+        "MBP",
+        "KCNE5",
+        "MAP6D1"
+    ],
+    "clique_3_612": [
+        "NPB",
+        "CLDND1",
+        "HMSD"
+    ],
+    "clique_3_613": [
+        "NRXN1",
+        "GRIK3",
+        "XKR4"
+    ],
+    "clique_3_614": [
+        "NSMF",
+        "ATAT1",
+        "SLC16A8"
+    ],
+    "clique_3_615": [
+        "OR2L13",
+        "PAAF1",
+        "RND2"
+    ],
+    "clique_3_616": [
+        "PABPC1L2A",
+        "PABPC1L2B",
+        "KIF5C"
+    ],
+    "clique_3_617": [
+        "PACS2",
+        "EVI5L",
+        "FAM219A"
+    ],
+    "clique_3_618": [
+        "PACSIN1",
+        "SEZ6",
+        "ALDOC"
+    ],
+    "clique_3_619": [
+        "PANX2",
+        "PRRT1",
+        "TMEM178A"
+    ],
+    "clique_3_620": [
+        "PAQR6",
+        "RAB4B",
+        "TSC22D4"
+    ],
+    "clique_3_621": [
+        "PHYHIPL",
+        "SYP",
+        "TAGLN3"
+    ],
+    "clique_3_622": [
+        "PLEKHB1",
+        "COL9A2",
+        "NIM1K"
+    ],
+    "clique_3_623": [
+        "PLLP",
+        "RTKN",
+        "ZDHHC9"
+    ],
+    "clique_3_624": [
+        "PNMA2",
+        "TMEM59L",
+        "KIF3C"
+    ],
+    "clique_3_625": [
+        "PODXL2",
+        "SEZ6L2",
+        "ARFGEF3"
+    ],
+    "clique_3_626": [
+        "PPP2R5B",
+        "NOVA2",
+        "GPR3"
+    ],
+    "clique_3_627": [
+        "PSD2",
+        "ACBD7",
+        "INSYN2A"
+    ],
+    "clique_3_628": [
+        "PTPRZ1",
+        "SOX8",
+        "SOX2"
+    ],
+    "clique_3_629": [
+        "RAB3C",
+        "CDK5R2",
+        "INA"
+    ],
+    "clique_3_630": [
+        "RHBDL1",
+        "SLC25A22",
+        "PDXK"
+    ],
+    "clique_3_631": [
+        "RNF112",
+        "PHYHIP",
+        "TMEM240"
+    ],
+    "clique_3_632": [
+        "RNF208",
+        "CHST1",
+        "STOML1"
+    ],
+    "clique_3_633": [
+        "RUNDC3A",
+        "AP3B2",
+        "FMN2"
+    ],
+    "clique_3_634": [
+        "SEZ6L",
+        "SULT4A1",
+        "FAM43B"
+    ],
+    "clique_3_635": [
+        "SMIM17",
+        "INPP5F",
+        "NALF1"
+    ],
+    "clique_3_636": [
+        "SMIM29",
+        "TFPT",
+        "KIAA0930"
+    ]
+}

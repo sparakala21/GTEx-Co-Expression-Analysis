@@ -1,629 +1,548 @@
 const API = 'https://api-production-f255.up.railway.app';
 
-let cy;
-let expanding = false;
+const TISSUES = [
+  'adipose tissue', 'adrenal gland', 'amygdala', 'appendix', 'basal ganglia',
+  'blood vessel', 'bone marrow', 'breast', 'cerebellum', 'cerebral cortex', 'cervix',
+  'choroid plexus', 'colon', 'duodenum', 'endometrium', 'epididymis', 'esophagus',
+  'fallopian tube', 'gallbladder', 'heart muscle', 'hippocampal formation', 'hypothalamus',
+  'kidney', 'liver', 'lung', 'lymph node', 'midbrain', 'ovary', 'pancreas', 'parathyroid gland',
+  'pituitary gland', 'placenta', 'prostate', 'rectum', 'retina', 'salivary gland', 'seminal vesicle',
+  'skeletal muscle', 'skin', 'small intestine', 'smooth muscle', 'spinal cord', 'spleen', 'stomach',
+  'testis', 'thymus', 'thyroid gland', 'tongue', 'tonsil', 'urinary bladder', 'vagina'
+];
 
-tissues = [
-  'adipose tissue', 'adrenal gland', 'amygdala', 'appendix', 'basal ganglia', 
-  'blood vessel', 'bone marrow', 'breast', 'cerebellum', 'cerebral cortex', 'cervix', 
-  'choroid plexus', 'colon', 'duodenum', 'endometrium', 'epididymis', 'esophagus', 
-  'fallopian tube', 'gallbladder', 'heart muscle', 'hippocampal formation', 'hypothalamus', 
-  'kidney', 'liver', 'lung', 'lymph node', 'midbrain', 'ovary', 'pancreas', 'parathyroid gland', 
-  'pituitary gland', 'placenta', 'prostate', 'rectum', 'retina', 'salivary gland', 'seminal vesicle', 
-  'skeletal muscle', 'skin', 'small intestine', 'smooth muscle', 'spinal cord', 'spleen', 'stomach', 
-  'testis', 'thymus', 'thyroid gland', 'tongue', 'tonsil', 'urinary bladder', 'vagina']
+// ── State ─────────────────────────────────────────────────────────────────────
+let cy   = null;
+let busy = false;
 
-function showError(msg) {
-  const bar = document.getElementById('error-bar');
-  bar.textContent = msg;
-  bar.style.display = 'block';
+// ── UI helpers ────────────────────────────────────────────────────────────────
+function setError(msg) {
+  const el = document.getElementById('error-bar');
+  el.textContent = msg;
+  el.style.display = msg ? 'block' : 'none';
 }
 
-function showToast(msg) {
-  const t = document.getElementById('expand-toast');
-  t.textContent = msg;
-  t.classList.add('visible');
-  setTimeout(() => t.classList.remove('visible'), 1200);
+function toast(msg, ms = 1400) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('visible');
+  clearTimeout(el._tid);
+  el._tid = setTimeout(() => el.classList.remove('visible'), ms);
 }
 
-function updateStats() {
+function setStats() {
   document.getElementById('stat-nodes').textContent = cy.nodes().length;
   document.getElementById('stat-edges').textContent = cy.edges().length;
 }
 
-function buildElements(data) {
-  const nodes = data.nodes.map(n => ({
+function setDetail(html) {
+  document.getElementById('detail-content').innerHTML = html;
+}
+
+// ── Element builders ──────────────────────────────────────────────────────────
+function nodeEl(n) {
+  return {
+    group: 'nodes',
     data: {
-      id: n.id,
-      label: n.label || n.id,
-      x: n.x,
-      y: n.y,
-      is_clique: n.is_clique,
-      clique_type: n.clique_type,
-      member_count: n.member_count,
-      expression: n.expression,
+      id:           n.id,
+      label:        n.label || n.id,
+      x:            n.x,
+      y:            n.y,
+      is_clique:    n.is_clique === true,
+      clique_type:  n.clique_type  ?? null,
+      member_count: n.member_count ?? null,
+      expression:   n.expression   ?? null,
+      diseases:     n.diseases     ?? [],
     },
-    position: { x: n.x * 1000, y: n.y * 1000 }
-  }));
+    position: { x: n.x * 1000, y: n.y * 1000 },
+  };
+}
 
-  const edges = data.edges.map(e => ({
+function edgeEl(e) {
+  return {
+    group: 'edges',
     data: {
-      id: `${e.source_id}__${e.target_id}`,
-      source: e.source_id,
-      target: e.target_id,
-      weight: e.weight,
-      is_boundary: e.is_boundary,
+      id:          `${e.source_id}__${e.target_id}`,
+      source:      e.source_id,
+      target:      e.target_id,
+      weight:      e.weight,
+      is_boundary: e.is_boundary === true,
+    },
+  };
+}
+
+function apiToElements(data) {
+  return [...data.nodes.map(nodeEl), ...data.edges.map(edgeEl)];
+}
+
+// ── API ───────────────────────────────────────────────────────────────────────
+async function fetchTop() {
+  const r = await fetch(`${API}/graph/top`);
+  if (!r.ok) throw new Error(`/graph/top → ${r.status}`);
+  return r.json();
+}
+
+async function fetchExpand(id) {
+  const r = await fetch(`${API}/graph/expand/${encodeURIComponent(id)}`);
+  if (!r.ok) throw new Error(`/graph/expand → ${r.status}`);
+  return r.json();
+}
+
+async function fetchParent(id) {
+  const r = await fetch(`${API}/graph/parent/${encodeURIComponent(id)}`);
+  if (!r.ok) throw new Error(`/graph/parent → ${r.status}`);
+  return r.json();
+}
+
+async function getSuggestions(query) {
+  const r = await fetch(`${API}/search/disease/suggest?query=${encodeURIComponent(query)}`);
+  return r.ok ? r.json() : [];
+}
+
+async function findDiseaseNodes(diseaseName) {
+  const r = await fetch(`${API}/search/disease/find?disease_name=${encodeURIComponent(diseaseName)}`);
+  if (!r.ok) throw new Error('Search failed');
+  return r.json();
+}
+
+// ── Highlights ────────────────────────────────────────────────────────────────
+function clearAll() {
+  cy.elements().removeClass(
+    'search-hit search-clique-hit search-dim nbr-focus nbr-hit nbr-edge nbr-dim'
+  );
+}
+
+function highlightNeighborhood(node) {
+  clearAll();
+  const nbrs = node.neighborhood();
+  cy.elements().addClass('nbr-dim');
+  node.removeClass('nbr-dim').addClass('nbr-focus');
+  nbrs.nodes().removeClass('nbr-dim').addClass('nbr-hit');
+  nbrs.edges().removeClass('nbr-dim').addClass('nbr-edge');
+}
+
+function highlightNodes(cliqueIds) {
+  clearAll();
+  const targets = cy.nodes().filter(n => cliqueIds.includes(n.id()));
+  if (targets.length) {
+    cy.elements().addClass('search-dim');
+    targets.removeClass('search-dim').addClass('search-clique-hit');
+    cy.animate({ fit: { eles: targets, padding: 50 }, duration: 400 });
+  }
+  return targets.length;
+}
+
+// ── Gene search ───────────────────────────────────────────────────────────────
+function initGeneSearch() {
+  const input     = document.getElementById('gene-search-input');
+  const statusEl  = document.getElementById('gene-search-status');
+
+  async function run(raw) {
+    const query = raw.trim();
+    if (!query) { clearAll(); statusEl.textContent = ''; return; }
+
+    statusEl.textContent = 'searching…';
+    try {
+      const data = await fetchParent(query);
+      if (data.clique?.id) {
+        const target = cy.getElementById(data.clique.id);
+        if (target.length) {
+          clearAll();
+          cy.elements().addClass('search-dim');
+          target.removeClass('search-dim').addClass('search-clique-hit');
+          cy.animate({ fit: { eles: target, padding: 80 }, duration: 400 });
+          statusEl.textContent = `found: ${data.clique.id}`;
+        } else {
+          statusEl.textContent = 'not in current view';
+        }
+        return;
+      }
+    } catch (e) {
+      // not a clique/parent — try as a leaf node
     }
-  }));
 
-  return [...nodes, ...edges];
-}
+    // fallback: search visible nodes by label/id
+    const lc = query.toLowerCase();
+    const matches = cy.nodes().filter(n =>
+      n.id().toLowerCase().includes(lc) ||
+      (n.data('label') || '').toLowerCase().includes(lc)
+    );
 
-function clearSearchHighlights() {
-  cy.elements().removeClass('search-hit search-clique-hit search-dim');
-}
-
-async function searchGene(query) {
-  query = query.trim();
-  if (!query) {
-    clearSearchHighlights();
-    document.getElementById('search-status').textContent = '';
-    return;
+    if (matches.length) {
+      clearAll();
+      cy.elements().addClass('search-dim');
+      matches.removeClass('search-dim').addClass('search-hit');
+      cy.animate({ fit: { eles: matches, padding: 50 }, duration: 400 });
+      statusEl.textContent = `${matches.length} match${matches.length > 1 ? 'es' : ''}`;
+    } else {
+      statusEl.textContent = 'not found';
+      clearAll();
+    }
   }
 
-  const q = query.toLowerCase();
+  document.getElementById('gene-search-btn').addEventListener('click', () => run(input.value));
+  document.getElementById('gene-search-clear').addEventListener('click', () => {
+    input.value = '';
+    clearAll();
+    statusEl.textContent = '';
+    input.focus();
+  });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') run(input.value); });
+}
 
-  const directHit = cy.nodes().filter(n => {
-    return n.id().toLowerCase() === q || (n.data('label') || '').toLowerCase() === q;
+// ── Disease search ────────────────────────────────────────────────────────────
+function initDiseaseSearch() {
+  const input    = document.getElementById('disease-search-input');
+  const statusEl = document.getElementById('disease-search-status');
+  const dropdown = document.getElementById('disease-search-dropdown');
+
+  // Autocomplete
+  input.addEventListener('input', async (e) => {
+    const val = e.target.value;
+    if (val.length < 2) { dropdown.style.display = 'none'; return; }
+
+    const suggestions = await getSuggestions(val);
+    if (!suggestions.length) { dropdown.style.display = 'none'; return; }
+
+    dropdown.innerHTML = suggestions
+      .map(s => `<div class="option">${s}</div>`)
+      .join('');
+    dropdown.style.display = 'block';
   });
 
-  if (directHit.length) {
-    clearSearchHighlights();
-    cy.elements().addClass('search-dim');
-    directHit.removeClass('search-dim').addClass('search-hit');
-    directHit.connectedEdges().removeClass('search-dim');
-    cy.animate({ fit: { eles: directHit, padding: 120 }, duration: 400 });
-    renderDetail(directHit.first());
-    document.getElementById('search-status').textContent =
-      `found: ${directHit.first().id()}`;
-    return;
+  // Click a suggestion
+  dropdown.addEventListener('click', async (e) => {
+    if (!e.target.classList.contains('option')) return;
+    input.value = e.target.textContent;
+    dropdown.style.display = 'none';
+    await run(input.value);
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#disease-search-section')) {
+      dropdown.style.display = 'none';
+    }
+  });
+
+  async function run(raw) {
+    const query = raw.trim();
+    if (!query) { clearAll(); statusEl.textContent = ''; return; }
+
+    statusEl.textContent = 'searching…';
+    try {
+      const result = await findDiseaseNodes(query);
+      if (result.associated_cliques?.length) {
+        const found = highlightNodes(result.associated_cliques);
+        statusEl.textContent = found
+          ? `${found} cluster${found > 1 ? 's' : ''} found`
+          : 'no visible clusters match';
+      } else {
+        statusEl.textContent = 'no results';
+        clearAll();
+      }
+    } catch (err) {
+      statusEl.textContent = 'search failed';
+      clearAll();
+    }
   }
 
-  document.getElementById('search-status').textContent = 'searching…';
+  document.getElementById('disease-search-btn').addEventListener('click', () => run(input.value));
+  document.getElementById('disease-search-clear').addEventListener('click', () => {
+    input.value = '';
+    dropdown.style.display = 'none';
+    clearAll();
+    statusEl.textContent = '';
+    input.focus();
+  });
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { dropdown.style.display = 'none'; run(input.value); }
+    if (e.key === 'Escape') { dropdown.style.display = 'none'; }
+  });
+}
+
+// ── Expand clique ─────────────────────────────────────────────────────────────
+async function expandClique(node) {
+  if (busy) return;
+  busy = true;
+  const cliqueId = node.id();
+  node.addClass('expanding');
+  toast('expanding…');
+
   try {
-    const res = await fetch(`${API}/graph/parent/${encodeURIComponent(query)}`);
-    if (!res.ok) {
-      document.getElementById('search-status').textContent = 'not found';
-      clearSearchHighlights();
-      return;
-    }
-    const data = await res.json();
-    const cliqueId = data.clique?.id;
-    if (!cliqueId) {
-      document.getElementById('search-status').textContent = 'not found';
-      clearSearchHighlights();
-      return;
-    }
+    const data = await fetchExpand(cliqueId);
+    const expandedIds = new Set(data.nodes.map(n => n.id));
 
-    const cliqueNode = cy.getElementById(cliqueId);
-    if (!cliqueNode.length) {
-      document.getElementById('search-status').textContent =
-        `inside clique: ${cliqueId.slice(0, 24)}… (not visible)`;
-      clearSearchHighlights();
-      return;
-    }
+    // Record external neighbors before removing the clique node
+    const external = [];
+    node.connectedEdges().forEach(e => {
+      const otherId = e.source().id() === cliqueId ? e.target().id() : e.source().id();
+      if (!expandedIds.has(otherId)) {
+        external.push({ otherId, weight: e.data('weight'), is_boundary: e.data('is_boundary') });
+      }
+    });
 
-    clearSearchHighlights();
-    cy.elements().addClass('search-dim');
-    cliqueNode.removeClass('search-dim').addClass('search-clique-hit');
-    cliqueNode.connectedEdges().removeClass('search-dim');
-    cy.animate({ center: { eles: cliqueNode }, zoom: Math.max(cy.zoom(), 2), duration: 400 });
-    renderDetail(cliqueNode);
-    document.getElementById('search-status').textContent =
-      `"${query}" is inside this cluster`;
+    cy.remove(node);
+
+    // New nodes
+    cy.add(data.nodes.filter(n => !cy.getElementById(n.id).length).map(nodeEl));
+
+    // Internal edges
+    cy.add(
+      data.edges
+        .filter(e => !e.is_boundary)
+        .filter(e => !cy.getElementById(`${e.source_id}__${e.target_id}`).length)
+        .map(edgeEl)
+    );
+
+    // Boundary edges (only if the other end is already visible)
+    cy.add(
+      data.edges
+        .filter(e => e.is_boundary)
+        .filter(e => cy.getElementById(e.target_id).length)
+        .filter(e => !cy.getElementById(`${e.source_id}__${e.target_id}`).length)
+        .map(edgeEl)
+    );
+
+    // Re-attach external edges to the geometrically closest new node
+    external.forEach(({ otherId, weight, is_boundary }) => {
+      const other = cy.getElementById(otherId);
+      if (!other.length) return;
+      const op = other.position();
+      let closestId = null, closestDist = Infinity;
+      data.nodes.forEach(n => {
+        const el = cy.getElementById(n.id);
+        if (!el.length) return;
+        const d = Math.hypot(el.position().x - op.x, el.position().y - op.y);
+        if (d < closestDist) { closestDist = d; closestId = n.id; }
+      });
+      if (!closestId) return;
+      const fwd = `${closestId}__${otherId}`;
+      const rev = `${otherId}__${closestId}`;
+      if (!cy.getElementById(fwd).length && !cy.getElementById(rev).length) {
+        cy.add({ group: 'edges', data: { id: fwd, source: closestId, target: otherId, weight, is_boundary } });
+      }
+    });
+
+    setStats();
+    toast(`+${data.nodes.length} nodes`);
   } catch (err) {
-    document.getElementById('search-status').textContent = `error: ${err.message}`;
+    setError(`expand failed: ${err.message}`);
+  } finally {
+    busy = false;
   }
 }
 
-async function expandClique(cliqueNode) {
-  if (expanding) return;
-  expanding = true;
-
-  const cliqueId = cliqueNode.id();
-  const cliquePos = cliqueNode.position();
-
-  cliqueNode.addClass('expanding');
-  showToast('expanding…');
+// ── Repack clique ─────────────────────────────────────────────────────────────
+async function repackClique(node) {
+  if (busy) return;
+  busy = true;
+  toast('repacking…');
 
   try {
-    const res = await fetch(`${API}/graph/expand/${encodeURIComponent(cliqueId)}`);
-    if (!res.ok) throw new Error(`expand returned ${res.status}`);
-    const data = await res.json();
+    const data    = await fetchParent(node.id());
+    const parent  = data.clique;
+    const members = new Set(data.member_ids);
 
-    const memberIds = new Set(data.nodes.map(n => n.id));
-    const externalEdges = [];
-
-    cliqueNode.connectedEdges().forEach(e => {
-      const srcId = e.data('source');
-      const tgtId = e.data('target');
-      const otherId = srcId === cliqueId ? tgtId : srcId;
-      if (!memberIds.has(otherId)) {
-        externalEdges.push({
-          otherId,
-          weight: e.data('weight'),
+    // Collect external connections before removal
+    const external = [];
+    cy.nodes().filter(n => members.has(n.id())).connectedEdges().forEach(e => {
+      const srcIn = members.has(e.source().id());
+      const tgtIn = members.has(e.target().id());
+      if (srcIn !== tgtIn) {
+        external.push({
+          otherId:     srcIn ? e.target().id() : e.source().id(),
+          weight:      e.data('weight'),
           is_boundary: e.data('is_boundary'),
         });
       }
     });
 
-    cy.remove(cliqueNode);
-
-    const newNodeEls = data.nodes
-      .filter(n => !cy.getElementById(n.id).length)
-      .map(n => ({
-        data: {
-          id: n.id,
-          label: n.label || n.id,
-          x: n.x,
-          y: n.y,
-          is_clique: n.is_clique,
-          clique_type: n.clique_type,
-          member_count: n.member_count,
-          expression: n.expression,
-        },
-        position: { x: n.x * 1000, y: n.y * 1000 }
-      }));
-
-    cy.add(newNodeEls);
-
-    const internalEdgeEls = data.edges
-      .filter(e => !e.is_boundary)
-      .filter(e => !cy.getElementById(`${e.source_id}__${e.target_id}`).length)
-      .map(e => ({
-        data: {
-          id: `${e.source_id}__${e.target_id}`,
-          source: e.source_id,
-          target: e.target_id,
-          weight: e.weight,
-          is_boundary: false,
-        }
-      }));
-
-    cy.add(internalEdgeEls);
-
-    const boundaryEdgeEls = data.edges
-      .filter(e => e.is_boundary)
-      .filter(e => cy.getElementById(e.target_id).length)
-      .filter(e => !cy.getElementById(`${e.source_id}__${e.target_id}`).length)
-      .map(e => ({
-        data: {
-          id: `${e.source_id}__${e.target_id}`,
-          source: e.source_id,
-          target: e.target_id,
-          weight: e.weight,
-          is_boundary: true,
-        }
-      }));
-
-    cy.add(boundaryEdgeEls);
-
-    externalEdges.forEach(({ otherId, weight, is_boundary }) => {
-      const otherNode = cy.getElementById(otherId);
-      if (!otherNode.length) return;
-
-      const otherPos = otherNode.position();
-      let closest = null;
-      let closestDist = Infinity;
-      data.nodes.forEach(n => {
-        const nEl = cy.getElementById(n.id);
-        if (!nEl.length) return;
-        const p = nEl.position();
-        const d = Math.hypot(p.x - otherPos.x, p.y - otherPos.y);
-        if (d < closestDist) { closestDist = d; closest = n.id; }
-      });
-
-      if (!closest) return;
-
-      const edgeId = `${closest}__${otherId}`;
-      const edgeIdRev = `${otherId}__${closest}`;
-      if (cy.getElementById(edgeId).length || cy.getElementById(edgeIdRev).length) return;
-
-      cy.add({ data: { id: edgeId, source: closest, target: otherId, weight, is_boundary } });
-    });
-
-    updateStats();
-    showToast(`+${data.nodes.length} nodes`);
-
-  } catch (err) {
-    showError(`expand failed: ${err.message}`);
-    cliqueNode.removeClass('expanding');
-  } finally {
-    expanding = false;
-  }
-}
-
-async function repackClique(childNode) {
-  if (expanding) return;
-
-  const nodeId = childNode.id();
-  showToast('repacking...');
-
-  try {
-    const res = await fetch(`${API}/graph/parent/${encodeURIComponent(nodeId)}`);
-    if (!res.ok) throw new Error("Could not find parent clique");
-    const data = await res.json();
-
-    const parentClique = data.clique;
-    const memberIds = data.member_ids;
-
-    const nodesToRemove = cy.nodes().filter(n => memberIds.includes(n.id()));
-    const memberIdsArray = nodesToRemove.map(n => n.id());
-    const externalConnections = [];
-
-    nodesToRemove.connectedEdges().forEach(e => {
-      const src = e.source().id();
-      const tgt = e.target().id();
-      const srcIsMember = memberIdsArray.includes(src);
-      const tgtIsMember = memberIdsArray.includes(tgt);
-
-      if (srcIsMember !== tgtIsMember) {
-        const other = srcIsMember ? tgt : src;
-        externalConnections.push({
-          otherId: other,
-          weight: e.data('weight'),
-          is_boundary: e.data('is_boundary')
-        });
-      }
-    });
-
-    cy.remove(nodesToRemove);
+    cy.remove(cy.nodes().filter(n => members.has(n.id())));
 
     cy.add({
       group: 'nodes',
       data: {
-        id: parentClique.id,
-        label: parentClique.label || parentClique.id,
-        x: parentClique.x,
-        y: parentClique.y,
-        is_clique: true,
-        clique_type: parentClique.clique_type,
-        member_count: parentClique.member_count,
-        expression: parentClique.expression
+        id: parent.id, label: parent.id,
+        x: parent.x,  y: parent.y,
+        is_clique:    true,
+        clique_type:  parent.clique_type  ?? null,
+        member_count: parent.member_count ?? null,
+        expression:   parent.expression   ?? null,
+        diseases:     [],
       },
-      position: { x: parentClique.x * 1000, y: parentClique.y * 1000 }
+      position: { x: parent.x * 1000, y: parent.y * 1000 },
     });
 
-    externalConnections.forEach(conn => {
-      const edgeId = `${parentClique.id}__${conn.otherId}`;
-      if (!cy.getElementById(edgeId).length) {
-        cy.add({
-          group: 'edges',
-          data: {
-            id: edgeId,
-            source: parentClique.id,
-            target: conn.otherId,
-            weight: conn.weight,
-            is_boundary: conn.is_boundary
-          }
-        });
+    external.forEach(({ otherId, weight, is_boundary }) => {
+      const id = `${parent.id}__${otherId}`;
+      if (!cy.getElementById(id).length) {
+        cy.add({ group: 'edges', data: { id, source: parent.id, target: otherId, weight, is_boundary } });
       }
     });
 
-    updateStats();
-    showToast('repacked');
-
+    setStats();
+    toast('repacked');
   } catch (err) {
-    showError(`repack failed: ${err.message}`);
+    setError(`repack failed: ${err.message}`);
+  } finally {
+    busy = false;
   }
 }
 
-async function loadTop() {
-  const res = await fetch(`${API}/graph/top`);
-  if (!res.ok) throw new Error(`/graph/top returned ${res.status}`);
-  return res.json();
-}
-
+// ── Detail panel ──────────────────────────────────────────────────────────────
 function renderDetail(node) {
   const n = node.data();
-  const detail = document.getElementById('detail-content');
-  
-  const formatExprArray = (arr) => {
-    if (!arr || !Array.isArray(arr)) return '—';
-    
-    const validValues = arr.filter(v => v !== null && v !== undefined);
-    if (validValues.length === 0) return '—';
-    
-    const avg = validValues.reduce((a, b) => a + b, 0) / validValues.length;
-    const min = Math.min(...validValues);
-    const max = Math.max(...validValues);
-    
-    return `avg: ${avg.toFixed(2)} | min: ${min.toFixed(2)} | max: ${max.toFixed(2)}`;
+
+  const exprSummary = arr => {
+    if (!arr?.length) return '—';
+    const vals = arr.filter(v => v != null);
+    if (!vals.length) return '—';
+    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+    return `avg ${avg.toFixed(2)} · min ${Math.min(...vals).toFixed(2)} · max ${Math.max(...vals).toFixed(2)}`;
   };
-  
-  const formatExprDetail = (arr) => {
-    if (!arr || !Array.isArray(arr)) return 'no data';
-    
-    const combined = arr.map((v, i) => ({
-      name: tissues[i] || `unknown[${i}]`,
-      val: (v !== null && v !== undefined) ? Number(v) : null
-    }));
 
-    combined.sort((a, b) => {
-      if (a.val === null) return 1;
-      if (b.val === null) return -1;
-      return b.val - a.val;
-    });
+  const exprRows = arr => {
+    if (!arr?.length) return '<div class="muted">no data</div>';
+    return arr
+      .map((v, i) => ({ name: TISSUES[i] ?? `[${i}]`, val: v != null ? Number(v) : null }))
+      .sort((a, b) => (b.val ?? -Infinity) - (a.val ?? -Infinity))
+      .map(({ name, val }) => `
+        <div class="expr-row">
+          <span>${name}</span>
+          <strong>${val != null ? val.toFixed(2) : '—'}</strong>
+        </div>`).join('');
+  };
 
-    return combined.map(item => {
-      const displayVal = item.val !== null ? item.val.toFixed(2) : 'null';
-      return `
-        <div style="display: flex; justify-content: space-between; font-size:11px; padding:2px 0; border-bottom: 1px solid #333;">
-          <span>${item.name}:</span>
-          <strong style="color: var(--accent);">${displayVal}</strong>
-        </div>`;
-    }).join('');
-  }; 
+  const diseaseRows = list => {
+    if (!list?.length) return '<div class="muted">no associations</div>';
+    return list.map(d => `
+      <div class="disease-row">
+        <span class="disease-name">${d.disease_name}</span>
+        <span class="disease-p">p = ${d.p_value.toExponential(2)}</span>
+      </div>`).join('');
+  };
 
-  if (n.is_clique) {
-    detail.innerHTML = `
-      <div class="clique-badge">${n.clique_type || 'CLIQUE'}</div>
-      <div class="row"><span>id</span><span class="val" style="font-size:11px;">${n.id.slice(0, 18)}</span></div>
-      <div class="row"><span>members</span><span class="val">${n.member_count ?? '—'}</span></div>
-      <div class="row"><span>avg expr</span><span class="val" style="font-size:11px;">${formatExprArray(n.expression)}</span></div>
-      <div style="margin-top:6px; padding:8px; background:var(--surface); border-radius:4px; border-left:2px solid var(--accent);">
-      <div style="display: flex; justify-content: space-between; font-size:10px; color:var(--text-secondary); margin-bottom:4px; border-bottom: 1px solid var(--accent);">
-        <span>Tissue</span>
-        <span>Expression (Sorted ↓)</span>
-      </div>  
-      <div style="font-size:10px; color:var(--text-secondary); margin-bottom:4px;">Expression by tissue:</div>
-        ${formatExprDetail(n.expression)}
-      </div>
-      <div class="row"><span>x</span><span class="val">${Number(n.x).toFixed(4)}</span></div>
-      <div class="row"><span>y</span><span class="val">${Number(n.y).toFixed(4)}</span></div>
-      <div class="row"><span>degree</span><span class="val">${node.degree()}</span></div>
-      <div style="margin-top:8px; font-size:9px; color: var(--accent); letter-spacing:0.1em;">
-        ▸ double-click to expand
-      </div>
-    `;
-  } else {
-    detail.innerHTML = `
-      <div class="row"><span>id</span><span class="val" style="font-size:11px;">${n.id.slice(0, 18)}</span></div>
-      <div class="row"><span>label</span><span class="val">${(n.label || '—').slice(0, 16)}</span></div>
-      <div class="row"><span>avg expr</span><span class="val" style="font-size:11px;">${formatExprArray(n.expression)}</span></div>
-      <div style="margin-top:6px; padding:8px; background:var(--surface); border-radius:4px; border-left:2px solid var(--accent);">
-      <div style="display: flex; justify-content: space-between; font-size:10px; color:var(--text-secondary); margin-bottom:4px; border-bottom: 1px solid var(--accent);">
-        <span>Tissue</span>
-        <span>Expression (Sorted ↓)</span>
-      </div>
-      <div style="font-size:10px; color:var(--text-secondary); margin-bottom:4px;">Expression by tissue:</div>
-        ${formatExprDetail(n.expression)}
-      </div>
-      <div class="row"><span>x</span><span class="val">${Number(n.x).toFixed(4)}</span></div>
-      <div class="row"><span>y</span><span class="val">${Number(n.y).toFixed(4)}</span></div>
-      <div class="row"><span>degree</span><span class="val">${node.degree()}</span></div>
-    `;
-  }
+  setDetail(`
+    ${n.is_clique ? `<div class="clique-badge">${n.clique_type || 'CLIQUE'} · ${n.member_count ?? '?'} members</div>` : ''}
+    <div class="kv"><span>id</span><span class="val mono">${n.id.slice(0, 20)}</span></div>
+    <div class="kv"><span>label</span><span class="val">${(n.label || '—').slice(0, 18)}</span></div>
+    <div class="kv"><span>degree</span><span class="val">${node.degree()}</span></div>
+    <div class="kv"><span>expr</span><span class="val small">${exprSummary(n.expression)}</span></div>
+    <div class="section-head">Disease associations</div>
+    <div class="disease-list">${diseaseRows(n.diseases)}</div>
+    <div class="section-head">Expression by tissue</div>
+    <div class="expr-list">${exprRows(n.expression)}</div>
+    <div class="hint">${n.is_clique ? '▸ double-click to expand' : '▸ right-click to repack'}</div>
+  `);
 }
 
-function clearNeighborHighlights() {
-  cy.elements().removeClass('neighbor-focus neighbor-hit neighbor-edge neighbor-dim');
-}
-
-function initCytoscape(elements) {
+// ── Cytoscape init ────────────────────────────────────────────────────────────
+function initCy(elements) {
   cy = cytoscape({
     container: document.getElementById('cy'),
     elements,
     layout: { name: 'preset' },
-
+    wheelSensitivity: 0.3,
+    minZoom: 0.01,
+    maxZoom: 20,
     style: [
       {
         selector: 'node',
         style: {
-          'width': 10,
-          'height': 10,
+          width: 18, height: 18,
           'background-color': '#4a9eff',
           'border-width': 0,
-          'label': '',
+          label: '',
           'transition-property': 'background-color, border-color, width, height, opacity',
           'transition-duration': '150ms',
-          'cursor': 'default',
-        }
+        },
       },
       {
         selector: 'node[?is_clique]',
         style: {
-          'width': 'mapData(member_count, 3, 10, 14, 26)',
-          'height': 'mapData(member_count, 3, 10, 14, 26)',
+          width:  'mapData(member_count, 2, 12, 12, 30)',
+          height: 'mapData(member_count, 2, 12, 12, 30)',
           'background-color': '#00e5ff',
           'border-width': 1.5,
-          'border-color': '#00e5ff66',
+          'border-color': '#00e5ff55',
           'shadow-blur': 8,
           'shadow-color': '#00e5ff',
-          'shadow-opacity': 0.6,
-          'shadow-offset-x': 0,
-          'shadow-offset-y': 0,
-          'cursor': 'pointer',
-        }
+          'shadow-opacity': 0.5,
+          'shadow-offset-x': 0, 'shadow-offset-y': 0,
+          cursor: 'pointer',
+        },
       },
-      {
-        selector: 'node.expanding',
-        style: {
-          'opacity': 0.3,
-        }
-      },
-      {
-        selector: 'node:selected',
-        style: {
-          'border-width': 2,
-          'border-color': '#ffffff',
-          'background-color': '#ffffff',
-        }
-      },
-      {
-        selector: 'node:hover',
-        style: {
-          'border-width': 1.5,
-          'border-color': '#ffffff88',
-        }
-      },
+      { selector: 'node.expanding',  style: { opacity: 0.25 } },
+      { selector: 'node:selected',   style: { 'border-width': 2, 'border-color': '#fff', 'background-color': '#fff' } },
       {
         selector: 'edge',
         style: {
-          'width': 'mapData(weight, 0, 5, 0.4, 2)',
+          width: 'mapData(weight, 0, 5, 0.4, 2)',
           'line-color': '#1e3a4a',
-          'opacity': 0.7,
+          opacity: 0.6,
           'curve-style': 'straight',
-        }
+        },
       },
       {
         selector: 'edge[?is_boundary]',
-        style: {
-          'line-color': '#ff6b35',
-          'opacity': 0.35,
-          'line-style': 'dashed',
-          'line-dash-pattern': [4, 4],
-        }
+        style: { 'line-color': '#ff6b35', opacity: 0.3, 'line-style': 'dashed', 'line-dash-pattern': [4, 4] },
       },
-      // --- Search highlight styles ---
-      {
-        selector: 'node.search-hit',
-        style: {
-          'background-color': '#ffe040',
-          'border-width': 2.5,
-          'border-color': '#ffcc00',
-          'width': 16,
-          'height': 16,
-          'z-index': 999,
-        }
-      },
-      {
-        selector: 'node.search-clique-hit',
-        style: {
-          'background-color': '#ffe040',
-          'border-width': 3,
-          'border-color': '#ff9900',
-          'shadow-blur': 14,
-          'shadow-color': '#ffcc00',
-          'shadow-opacity': 0.9,
-          'shadow-offset-x': 0,
-          'shadow-offset-y': 0,
-          'z-index': 999,
-        }
-      },
-      {
-        selector: 'node.search-dim, edge.search-dim',
-        style: {
-          'opacity': 0.12,
-        }
-      },
-      {
-        selector: 'node.neighbor-focus',
-        style: {
-          'border-width': 2.5,
-          'border-color': '#ffffff',
-          'background-color': '#ffffff',
-          'z-index': 999,
-        }
-      },
-      {
-        selector: 'node.neighbor-hit',
-        style: {
-          'background-color': '#4aff91',
-          'border-width': 1.5,
-          'border-color': '#00ff6a',
-          'z-index': 998,
-        }
-      },
-      {
-        selector: 'edge.neighbor-edge',
-        style: {
-          'line-color': '#4aff91',
-          'opacity': 0.9,
-          'width': 1.5,
-          'z-index': 997,
-        }
-      },
-      {
-        selector: 'node.neighbor-dim, edge.neighbor-dim',
-        style: {
-          'opacity': 0.08,
-        }
-      },
+      { selector: 'node.search-hit',
+        style: { 'background-color': '#ffe040', 'border-width': 2.5, 'border-color': '#ffcc00', 'z-index': 999 } },
+      { selector: 'node.search-clique-hit',
+        style: { 'background-color': '#ffe040', 'border-width': 3, 'border-color': '#ff9900',
+                 'shadow-blur': 14, 'shadow-color': '#ffcc00', 'shadow-opacity': 0.9,
+                 'shadow-offset-x': 0, 'shadow-offset-y': 0, 'z-index': 999 } },
+      { selector: 'node.search-dim, edge.search-dim', style: { opacity: 0.08 } },
+      { selector: 'node.nbr-focus',
+        style: { 'border-width': 2.5, 'border-color': '#fff', 'background-color': '#fff', 'z-index': 999 } },
+      { selector: 'node.nbr-hit',
+        style: { 'background-color': '#4aff91', 'border-width': 1.5, 'border-color': '#00ff6a', 'z-index': 998 } },
+      { selector: 'edge.nbr-edge',
+        style: { 'line-color': '#4aff91', opacity: 0.9, width: 1.5, 'z-index': 997 } },
+      { selector: 'node.nbr-dim, edge.nbr-dim', style: { opacity: 0.06 } },
     ],
-
-    wheelSensitivity: 0.3,
-    minZoom: 0.01,
-    maxZoom: 20,
   });
 
-  updateStats();
+  setStats();
 
-  cy.on('tap', 'node', function(evt) {
-    const node = evt.target;
-    clearSearchHighlights();
-    clearNeighborHighlights();
-
-    const neighbors = node.neighborhood();
-    const neighborNodes = neighbors.nodes();
-    const neighborEdges = neighbors.edges();
-
-    cy.elements().addClass('neighbor-dim');
-    node.removeClass('neighbor-dim').addClass('neighbor-focus');
-    neighborNodes.removeClass('neighbor-dim').addClass('neighbor-hit');
-    neighborEdges.removeClass('neighbor-dim').addClass('neighbor-edge');
-
-    renderDetail(node);
+  cy.on('tap', 'node', evt => {
+    highlightNeighborhood(evt.target);
+    renderDetail(evt.target);
   });
 
-  cy.on('cxttap', 'node', function(evt) {
-    const n = evt.target;
-    if (!n.data('is_clique')) {
-      repackClique(n);
-    }
+  cy.on('dbltap', 'node', evt => {
+    if (evt.target.data('is_clique') === true) expandClique(evt.target);
   });
 
-  cy.on('dblclick tap', 'node[?is_clique]', function(evt) {
-    evt.stopPropagation();
-    expandClique(evt.target);
+  cy.on('cxttap', 'node', evt => {
+    repackClique(evt.target);
   });
 
-  cy.on('tap', function(evt) {
-    if (evt.target === cy) {
-      document.getElementById('detail-content').textContent = 'click a node';
-      clearSearchHighlights();
-      clearNeighborHighlights();
-      document.getElementById('search-status').textContent = '';
-    }
+  cy.on('tap', evt => {
+    if (evt.target !== cy) return;
+    clearAll();
+    setDetail('<span class="muted">click a node</span>');
+    document.getElementById('gene-search-status').textContent = '';
+    document.getElementById('disease-search-status').textContent = '';
   });
 }
 
+// ── Boot ──────────────────────────────────────────────────────────────────────
 (async () => {
   try {
-    const data = await loadTop();
-    const elements = buildElements(data);
-    initCytoscape(elements);
+    const data = await fetchTop();
+    initCy(apiToElements(data));
     document.getElementById('loading').style.display = 'none';
-
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
-    const searchClear = document.getElementById('search-clear');
-
-    const doSearch = () => searchGene(searchInput.value);
-
-    searchBtn.addEventListener('click', doSearch);
-    searchInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') doSearch();
-    });
-    searchClear.addEventListener('click', () => {
-      searchInput.value = '';
-      clearSearchHighlights();
-      document.getElementById('search-status').textContent = '';
-      searchInput.focus();
-    });
-
   } catch (err) {
     document.getElementById('loading').style.display = 'none';
-    showError(`failed to load: ${err.message}`);
+    setError(`failed to load: ${err.message}`);
+    return;
   }
+
+  initGeneSearch();
+  initDiseaseSearch();
+
+  document.getElementById('fit-btn').addEventListener('click', () => cy.fit(undefined, 40));
 })();

@@ -302,3 +302,96 @@ button.fit-btn:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* ── Two-panel layout ─────────────────────────────────── */
+main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+#left-panel,
+#right-panel {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#left-panel  { border-right: 1px solid var(--border); }
+#right-panel { border-left:  1px solid var(--border); }
+
+/* ── Shared search component ──────────────────────────── */
+.search-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.search-row input {
+  flex: 1;
+  background: #0d1f2d;
+  border: 1px solid #1e3a4a;
+  border-radius: 4px;
+  color: #c8e0f0;
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 4px 7px;
+  outline: none;
+}
+
+.search-row input:focus   { border-color: #00e5ff66; }
+.search-row input::placeholder { color: #3a5a6a; }
+
+.search-row button {
+  background: #0d1f2d;
+  border: 1px solid #1e3a4a;
+  border-radius: 4px;
+  color: #4a9eff;
+  font-size: 10px;
+  padding: 4px 7px;
+  cursor: pointer;
+  line-height: 1;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.search-row button:last-child { color: #ff6b35; }
+.search-row button:hover      { border-color: #4a9eff; color: #88c8ff; }
+.search-row button:last-child:hover { border-color: #ff6b35; color: #ff9966; }
+
+.search-status {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #ffe040;
+  min-height: 14px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Disease autocomplete dropdown ───────────────────── */
+.search-dropdown {
+  display: none;
+  margin-top: 4px;
+  background: #0d1f2d;
+  border: 1px solid #1e3a4a;
+  border-radius: 4px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.search-dropdown .option {
+  padding: 5px 8px;
+  font-size: 11px;
+  color: #c8e0f0;
+  cursor: pointer;
+  border-bottom: 1px solid #1e3a4a22;
+}
+
+.search-dropdown .option:last-child { border-bottom: none; }
+.search-dropdown .option:hover      { background: #00e5ff11; color: #00e5ff; }

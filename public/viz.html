@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GTEx Network</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
-  <script src="./main.js"></script>
   <style>
     @import "./styles.css";
   </style>
@@ -25,11 +24,38 @@
 </header>
 
 <main>
+
+  <!-- ── LEFT PANEL ─────────────────────────────────────── -->
+  <aside id="left-panel">
+
+    <!-- Disease search -->
+    <div class="panel-section" id="disease-search-section">
+      <div class="panel-label">Disease search</div>
+      <div class="search-row">
+        <input
+          id="disease-search-input"
+          type="text"
+          placeholder="disease name…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="disease-search-btn" title="Search">▶</button>
+        <button id="disease-search-clear" title="Clear">✕</button>
+      </div>
+      <div id="disease-search-status" class="search-status"></div>
+      <div id="disease-search-dropdown" class="search-dropdown"></div>
+    </div>
+
+  </aside>
+
+  <!-- ── GRAPH ──────────────────────────────────────────── -->
   <div id="cy">
-    <div id="expand-toast">expanding…</div>
+    <div id="toast"></div>
   </div>
 
-  <aside>
+  <!-- ── RIGHT PANEL ────────────────────────────────────── -->
+  <aside id="right-panel">
+
     <div class="panel-section">
       <div class="panel-label">Selected</div>
       <div id="detail-content" style="color: var(--text); font-size:10px;">
@@ -75,11 +101,12 @@
     </div>
 
     <div class="panel-section">
-      <button class="fit-btn" onclick="cy.fit(undefined, 40)">fit to screen</button>
+      <button class="fit-btn" id="fit-btn">fit to screen</button>
     </div>
+
   </aside>
 </main>
 
-
+<script src="./main.js"></script>
 </body>
 </html>

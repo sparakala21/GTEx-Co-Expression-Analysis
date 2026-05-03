@@ -5,6 +5,26 @@ import psycopg2
 from psycopg2.extras import execute_values
 import json
 import os
+from scipy.stats import hypergeom
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def _test_clique(clique_id, member_ids, disease_dict, background_count):
+    mod_genes_set = set(member_ids)
+    N = len(mod_genes_set)
+    if N == 0:
+        return []
+    
+    local_results = []
+    for mondo_id, disease_data in disease_dict.items():
+        disease_genes = set(disease_data["genes"])
+        overlap = mod_genes_set.intersection(disease_genes)
+        x = len(overlap)
+        if x == 0:
+            continue
+        p_val = float(hypergeom.sf(x - 1, background_count, len(disease_genes), N))
+        if p_val < 0.05:
+            local_results.append((clique_id, mondo_id, disease_data["diseaseName"], p_val, list(overlap)))
+    return local_results
 
 def init_db(cur, conn):
     cur.execute("""
@@ -40,6 +60,14 @@ def init_db(cur, conn):
             weight       FLOAT,
             CONSTRAINT edges_unique UNIQUE (source_id, target_id, level, is_boundary)
         );
+        CREATE TABLE IF NOT EXISTS disease_associations (
+            module_id TEXT,
+            mondo_id TEXT,
+            disease_name TEXT,
+            p_value FLOAT,
+            overlap TEXT[]
+        );
+        CREATE INDEX IF NOT EXISTS idx_assoc_module ON disease_associations(module_id);
         CREATE INDEX IF NOT EXISTS idx_cliques_parent ON cliques(parent_id);
         CREATE INDEX IF NOT EXISTS idx_cliques_level  ON cliques(level);
         CREATE INDEX IF NOT EXISTS idx_edges_source   ON edges(source_id);
@@ -47,7 +75,6 @@ def init_db(cur, conn):
     """)
     conn.commit()
     print("Database initialized")
-
 
 def get_gene_expressions(genes, expression_data_path):
     """
@@ -87,7 +114,6 @@ def load_graph(graph_path):
             data['weight'] = float(data['weight'])
     return G
 
-
 def load_layout(layout_path):
     """Load 2D embeddings from CSV file."""
     embeddings = pd.read_csv(layout_path)
@@ -95,7 +121,6 @@ def load_layout(layout_path):
     emb_matrix = embeddings.drop(columns=['node']).to_numpy(dtype=float)
     print(f"Loaded layout with shape {emb_matrix.shape}")
     return names, emb_matrix
-
 
 def build_layout_dict(G, names, emb_matrix):
     """Map node IDs that exist in G to (x, y) from the embedding matrix."""
@@ -109,7 +134,6 @@ def build_layout_dict(G, names, emb_matrix):
             print(f"Warning: node {node_id} not found in layout, defaulting to (0, 0)")
             layout[node_id] = (0.0, 0.0)
     return layout
-
 
 def export_nodes(G, layout, expressions, cur, conn):
     """
@@ -155,7 +179,6 @@ def export_edges(G, level, cur, conn):
     conn.commit()
     print(f"Inserted {len(rows)} edges at level {level}")
 
-
 def find_and_collapse_cliques(G, level, cur, conn, min_size=3, max_size=4):
     """
     Optimized to find specific small cliques and handle JSONB types correctly.
@@ -164,20 +187,17 @@ def find_and_collapse_cliques(G, level, cur, conn, min_size=3, max_size=4):
     edge_rows = []
     node_to_clique = {}
     
-    # Find cliques of size 3 and 4 specifically
-    # Using enumerate_all_cliques is okay IF we stop it early
     all_cliques = []
     for c in nx.enumerate_all_cliques(G):
         if len(c) > max_size:
-            continue # We don't care about larger cliques for this hierarchy
+            continue
         if len(c) >= min_size:
             all_cliques.append(c)
-        if len(all_cliques) > 5000: # Safety break to prevent memory explosion
+        if len(all_cliques) > 5000:
             break
 
     used_nodes = set()
     selected_cliques = []
-    # Sort by size descending so we pick K4s before K3s
     for clique in sorted(all_cliques, key=len, reverse=True):
         if not any(n in used_nodes for n in clique):
             selected_cliques.append(clique)
@@ -196,7 +216,6 @@ def find_and_collapse_cliques(G, level, cur, conn, min_size=3, max_size=4):
         bbox = {"minX": min(xs), "maxX": max(xs), "minY": min(ys), "maxY": max(ys)}
         clique_type = f"K{len(members)}"
 
-        # Use psycopg2.extras.Json for reliable JSONB insertion
         clique_rows.append((
             clique_id, clique_type, level, cx, cy,
             None, member_ids, json.dumps(bbox)
@@ -246,12 +265,62 @@ def find_and_collapse_cliques(G, level, cur, conn, min_size=3, max_size=4):
     conn.commit()
     return G_new, G_new.number_of_nodes()
 
+def perform_disease_enrichment(cur, conn, disease_dict, background_count):
+    """
+    Analyzes cliques stored in the database for disease enrichment.
+    """
+    # Fetch all cliques to treat as modules
+    cur.execute("SELECT id, member_ids FROM cliques")
+    cliques = cur.fetchall()
+    
+    results = []
+    i=0
+    cur.execute("SELECT id, member_ids FROM cliques")
+    cliques = cur.fetchall()
+
+    results = []
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {
+            executor.submit(_test_clique, clique_id, member_ids, disease_dict, background_count): clique_id
+            for clique_id, member_ids in cliques
+        }
+        for i, future in enumerate(as_completed(futures)):
+            if i % 100 == 0:
+                print(f"Processing clique {i}/{len(cliques)}")
+            results.extend(future.result())
+    cur.execute("""
+        SELECT id FROM nodes
+        WHERE id NOT IN (
+            SELECT unnest(member_ids) FROM cliques
+        )
+    """)
+    leaf_nodes = cur.fetchall()
+    
+    for (node_id,) in leaf_nodes:
+        mod_genes_set = {node_id}
+        for mondo_id, disease_data in disease_dict.items():
+            disease_genes = set(disease_data["genes"])
+            overlap = mod_genes_set.intersection(disease_genes)
+            x = len(overlap)
+            if x == 0: continue
+            p_val = float(hypergeom.sf(x - 1, background_count, len(disease_genes), 1))
+            if p_val < 0.05:
+                results.append((node_id, mondo_id, disease_data["diseaseName"], p_val, list(overlap)))
+
+    execute_values(cur, """
+        INSERT INTO disease_associations (module_id, mondo_id, disease_name, p_value, overlap)
+        VALUES %s
+    """, results)
+    conn.commit()
+    print(f"Stored {len(results)} significant disease associations.")
+
 def clear_database(cur, conn):
     """Clear all data from the database tables."""
     cur.execute("""
         TRUNCATE TABLE edges;
         TRUNCATE TABLE nodes CASCADE;
         TRUNCATE TABLE cliques CASCADE;
+        TRUNCATE TABLE disease_associations CASCADE;
     """)
     conn.commit()
     print("Database cleared")
@@ -265,7 +334,9 @@ def run_pipeline(cur, conn, depth):
     # === FILE PATHS - CENTRALIZED HERE ===
     expression_data_path = "data/expression_data/rna_tissue_consensus.tsv"
     graph_path = "data/GTEx_PMFG.gexf"
-    layout_path = "data/umap_layout.csv"
+    layout_path = "data/GTEx_PMFG_spring_layout.csv"
+    disease_dict_path = "data/DisGeNET/disease_gene_relationships.json"
+
     
     print(f"Expression data: {expression_data_path}")
     print(f"Network graph: {graph_path}")
@@ -314,11 +385,16 @@ def run_pipeline(cur, conn, depth):
             print(f"Converged at level {level} with {new_count} nodes")
             break
         prev_count = new_count
+
+    print("Performing disease enrichment analysis...")
+    with open(disease_dict_path) as f:
+        disease_dict = json.load(f)
+    background_count = len(set().union(*[set(d["genes"]) for d in disease_dict.values()]))
+    perform_disease_enrichment(cur, conn, disease_dict, background_count)
     
     print("\nPipeline completed successfully!")
 
 
-# --- Entry point ---
 if __name__ == "__main__":
     conn = psycopg2.connect(os.environ["DATABASE_URL"])
     cur = conn.cursor()
@@ -328,3 +404,22 @@ if __name__ == "__main__":
     finally:
         cur.close()
         conn.close()
+
+# if __name__ == "__main__":
+#     DB_USER = "backend_user"
+#     DB_PASS = "backend_password"
+#     DB_HOST = "localhost"
+#     DB_PORT = "5432"
+#     DB_NAME = "backend_db"
+    
+#     connection_string = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    
+#     conn = psycopg2.connect(connection_string)
+#     cur = conn.cursor()
+
+#     try:
+#         run_pipeline(cur, conn, depth=20)
+#     finally:
+#         cur.close()
+#         conn.close()
+        

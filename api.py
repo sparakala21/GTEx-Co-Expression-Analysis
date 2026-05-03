@@ -108,7 +108,7 @@ def get_clique_diseases(clique_ids: List[str], cur) -> dict:
         ))
         
     return disease_map
-    
+
 def get_clique_expression(member_ids: List[str], cur) -> Optional[List[Optional[float]]]:
     """
     Get averaged expression array for a clique based on its member nodes.
@@ -285,6 +285,7 @@ def expand_clique(clique_id: str):
     finally:
         if cur: cur.close()
         if conn: conn.close()
+        
 @app.get("/graph/parent/{node_id}")
 def get_parent_clique(node_id: str):
     conn = None
@@ -326,6 +327,51 @@ def get_parent_clique(node_id: str):
     finally:
         if cur: cur.close()
         if conn: conn.close()
+
+@app.get("/search/disease/suggest")
+def suggest_diseases(query: str):
+    if len(query) < 2:
+        return []
+    
+    conn = get_conn()
+    cur = conn.cursor()
+    try:
+        # Fetch unique disease names matching the input string
+        cur.execute("""
+            SELECT DISTINCT disease_name 
+            FROM disease_associations 
+            WHERE disease_name ILIKE %s 
+            LIMIT 10
+        """, (f"%{query}%",))
+        
+        rows = cur.fetchall()
+        return [r["disease_name"] for r in rows]
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/search/disease/find")
+def find_disease_nodes(disease_name: str):
+    conn = get_conn()
+    cur = conn.cursor()
+    try:
+        cur.execute("""
+            SELECT module_id, p_value 
+            FROM disease_associations 
+            WHERE disease_name = %s
+            ORDER BY p_value ASC
+        """, (disease_name,))
+        
+        rows = cur.fetchall()
+        
+        return {
+            "disease_name": disease_name,
+            "associated_cliques": list(set(r["module_id"] for r in rows)),
+            "count": len(rows)
+        }
+    finally:
+        cur.close()
+        conn.close()
 
 
 # note to self: python3 -m uvicorn api:app --reload to run
